@@ -1,24 +1,10 @@
-# Polaris Icons
+# WIP: Polaris Icons
 
-[Polaris Icons](https://polaris.shopify.com/icons) are a set of svg icons for use by Shopify partners building applications on the Shopify platform.
+<!-- MDOC !-->
 
-This library provides optimized svgs for each Polaris Icon packaged as a Phoenix Component.
+Provides precompiled icon Phoenix Components from [Polaris Icons](https://polaris.shopify.com/icons).
 
 Current Polaris Icons Version: **6.5.0**.
-
-## Installation
-
-Add Polaris Icons to your `mix.exs`:
-
-```elixir
-defp deps do
-  [
-    {:polaris_icons, "~> 0.0.1"}
-  ]
-end
-```
-
-After that, run `mix deps.get`.
 
 ## Usage
 
@@ -53,7 +39,53 @@ You can also pass arbitrary HTML attributes to the components, such as classes:
 
 For a full list of icons see [the docs](https://hexdocs.pm/polaris_icons) or [Polaris Icons](https://polaris.shopify.com/icons).
 
-## Attribution
+## Polaris Icons License Attribution
+
+Copyright (c) 2017-present Shopify Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+The rights granted above may only be exercised to develop and distribute
+applications that integrate or interoperate with Shopify software or services,
+and in the case of external, stand-alone applications that do not embed
+directly inside Shopify, the rights granted above may only be exercised to
+develop and distribute applications that are dissimilar and visually distinct
+from Shopify products and services (including the internal administration page
+of a Shopify merchant store), as determined by Shopify in its sole discretion.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+<!-- MDOC !-->
+
+## Installation
+
+Add Polaris Icons to your `mix.exs`:
+
+```elixir
+defp deps do
+  [
+    {:polaris_icons, "~> 0.0.1"}
+  ]
+end
+```
+
+After that, run `mix deps.get`.
+
+## Thanks, Max!
 
 This project was initially forked from [mveytsman/heroicons_elixir](https://github.com/mveytsman/heroicons_elixir).
 All credit for this project's inspiration and structure goes to Max and other contributors of `heroicons_elixir`!

@@ -1,53 +1,10 @@
-defmodule Heroicons do
-  @moduledoc """
-  Provides precompiled icon compiles from [heroicons.com v2.0.12](heroicons.com).
+defmodule PolarisIcons do
+  @external_resource "README.md"
+  @moduledoc "README.md"
+          |> File.read!()
+          |> String.split("<!-- MDOC !-->")
+          |> Enum.fetch!(1)
 
-  Heroicons are designed by [Steve Schoger](https://twitter.com/steveschoger)
-
-  ## Usage
-
-  Hero icons come in three styles – outline (`24x24`), solid (`24x24`), and mini (`20x20`).
-
-  By default, the icon components will use the outline style, but the `solid` or
-  `mini` attributes may be passed to select styling, for example:
-
-  ```heex
-  <Heroicons.cake />
-  <Heroicons.cake solid />
-  <Heroicons.cake mini />
-  ```
-
-  You can also pass arbitrary HTML attributes to the components:
-
-   ```heex
-  <Heroicons.cake class="w-2 h-2" />
-  <Heroicons.cake solid class="w-2 h-2" />
-  ```
-
-  ## Heroicons License Attribution
-
-  MIT License
-
-  Copyright (c) 2020 Refactoring UI Inc.
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
-  """
   use Phoenix.Component
 
   defp svg(assigns) do
