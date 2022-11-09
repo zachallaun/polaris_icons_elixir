@@ -1,3 +1,5 @@
+# Generated at <%= DateTime.to_iso8601(DateTime.utc_now()) %>
+
 defmodule PolarisIcons do
   @external_resource "README.md"
   @moduledoc "README.md"
@@ -7,22 +9,44 @@ defmodule PolarisIcons do
 
   use Phoenix.Component
 
-  @shopify_color_values [nil | ~w(base subdued critical interactive warning highlight success primary)]
+  @shopify_color_values [
+    nil | ~w(base subdued critical interactive warning highlight success primary)
+  ]
+
+  @rest_defaults %{"aria-hidden": "true", viewBox: "0 0 20 20"}
+
+  attr :major, :boolean, default: false
+  attr :minor, :boolean, default: false
+  attr :paths, :any, required: true
+  attr :class, :any, default: nil
+  attr :color, :string, default: nil, values: @shopify_color_values
+  attr :backdrop, :boolean, default: false
+  attr :rest, :global, default: %{}
 
   defp svg(assigns) do
+    assigns = Map.update(assigns, :rest, @rest_defaults, &Map.merge(&1, @rest_defaults))
+
     case assigns do
       %{minor: true} ->
         ~H"""
-        <.svg_element {@rest} class={["Polaris-Icon__Minor", assigns[:class]]}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class={["Polaris-Icon__Minor", @class]}
+          {@rest}
+        >
           <%%= {:safe, @paths[:minor]} %>
-        </.svg_element>
+        </svg>
         """
 
       %{major: true} ->
         ~H"""
-        <.svg_element {@rest} class={["Polaris-Icon__Major", assigns[:class]]}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class={["Polaris-Icon__Major", @class]}
+          {@rest}
+        >
           <%%= {:safe, @paths[:major]} %>
-        </.svg_element>
+        </svg>
         """
 
       %{} ->
@@ -54,10 +78,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.<%= func %> />
-  <Polaris.<%= func %> minor />
-  <Polaris.<%= func %> class="w-4 h-4" color="highlight" />
-  <Polaris.<%= func %> minor backdrop />
+  <PolarisIcons.<%= func %> />
+  <PolarisIcons.<%= func %> minor />
+  <PolarisIcons.<%= func %> class="w-4 h-4" color="highlight" />
+  <PolarisIcons.<%= func %> minor backdrop />
   ```
   """
   attr :rest, :global, doc: "the arbitrary HTML attributes for the svg container", include: ~w(fill stroke stroke-width)
@@ -81,10 +105,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.<%= func %> />
-  <Polaris.<%= func %> major />
-  <Polaris.<%= func %> class="w-4 h-4" color="highlight" />
-  <Polaris.<%= func %> backdrop />
+  <PolarisIcons.<%= func %> />
+  <PolarisIcons.<%= func %> major />
+  <PolarisIcons.<%= func %> class="w-4 h-4" color="highlight" />
+  <PolarisIcons.<%= func %> backdrop />
   ```
   """
   attr :rest, :global, doc: "the arbitrary HTML attributes for the svg container", include: ~w(fill stroke stroke-width)
@@ -107,9 +131,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.<%= func %> minor />
-  <Polaris.<%= func %> minor class="w-4 h-4" color="highlight" />
-  <Polaris.<%= func %> minor backdrop />
+  <PolarisIcons.<%= func %> minor />
+  <PolarisIcons.<%= func %> minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.<%= func %> minor backdrop />
   ```
   """
   attr :rest, :global, doc: "the arbitrary HTML attributes for the svg container", include: ~w(fill stroke stroke-width)

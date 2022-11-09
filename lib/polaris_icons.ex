@@ -1,3 +1,5 @@
+# Generated at 2022-11-09T22:02:15.767195Z
+
 defmodule PolarisIcons do
   @external_resource "README.md"
   @moduledoc "README.md"
@@ -11,20 +13,32 @@ defmodule PolarisIcons do
     nil | ~w(base subdued critical interactive warning highlight success primary)
   ]
 
+  @rest_defaults %{"aria-hidden": "true", viewBox: "0 0 20 20"}
+
+  attr :major, :boolean, default: false
+  attr :minor, :boolean, default: false
+  attr :paths, :any, required: true
+  attr :class, :any, default: nil
+  attr :color, :string, default: nil, values: @shopify_color_values
+  attr :backdrop, :boolean, default: false
+  attr :rest, :global, default: %{}
+
   defp svg(assigns) do
+    assigns = Map.update(assigns, :rest, @rest_defaults, &Map.merge(&1, @rest_defaults))
+
     case assigns do
       %{minor: true} ->
         ~H"""
-        <.svg_element {@rest} class={["Polaris-Icon__Minor", assigns[:class]]}>
+        <svg xmlns="http://www.w3.org/2000/svg" class={["Polaris-Icon__Minor", @class]} {@rest}>
           <%= {:safe, @paths[:minor]} %>
-        </.svg_element>
+        </svg>
         """
 
       %{major: true} ->
         ~H"""
-        <.svg_element {@rest} class={["Polaris-Icon__Major", assigns[:class]]}>
+        <svg xmlns="http://www.w3.org/2000/svg" class={["Polaris-Icon__Major", @class]} {@rest}>
           <%= {:safe, @paths[:major]} %>
-        </.svg_element>
+        </svg>
         """
 
       %{} ->
@@ -54,10 +68,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.abandoned_cart />
-  <Polaris.abandoned_cart major />
-  <Polaris.abandoned_cart class="w-4 h-4" color="highlight" />
-  <Polaris.abandoned_cart backdrop />
+  <PolarisIcons.abandoned_cart />
+  <PolarisIcons.abandoned_cart major />
+  <PolarisIcons.abandoned_cart class="w-4 h-4" color="highlight" />
+  <PolarisIcons.abandoned_cart backdrop />
   ```
   """
   attr :rest, :global,
@@ -89,10 +103,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.accessibility />
-  <Polaris.accessibility major />
-  <Polaris.accessibility class="w-4 h-4" color="highlight" />
-  <Polaris.accessibility backdrop />
+  <PolarisIcons.accessibility />
+  <PolarisIcons.accessibility major />
+  <PolarisIcons.accessibility class="w-4 h-4" color="highlight" />
+  <PolarisIcons.accessibility backdrop />
   ```
   """
   attr :rest, :global,
@@ -124,10 +138,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.activities />
-  <Polaris.activities major />
-  <Polaris.activities class="w-4 h-4" color="highlight" />
-  <Polaris.activities backdrop />
+  <PolarisIcons.activities />
+  <PolarisIcons.activities major />
+  <PolarisIcons.activities class="w-4 h-4" color="highlight" />
+  <PolarisIcons.activities backdrop />
   ```
   """
   attr :rest, :global,
@@ -159,10 +173,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.add />
-  <Polaris.add major />
-  <Polaris.add class="w-4 h-4" color="highlight" />
-  <Polaris.add backdrop />
+  <PolarisIcons.add />
+  <PolarisIcons.add major />
+  <PolarisIcons.add class="w-4 h-4" color="highlight" />
+  <PolarisIcons.add backdrop />
   ```
   """
   attr :rest, :global,
@@ -194,10 +208,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.add_code />
-  <Polaris.add_code major />
-  <Polaris.add_code class="w-4 h-4" color="highlight" />
-  <Polaris.add_code backdrop />
+  <PolarisIcons.add_code />
+  <PolarisIcons.add_code major />
+  <PolarisIcons.add_code class="w-4 h-4" color="highlight" />
+  <PolarisIcons.add_code backdrop />
   ```
   """
   attr :rest, :global,
@@ -229,10 +243,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.add_image />
-  <Polaris.add_image major />
-  <Polaris.add_image class="w-4 h-4" color="highlight" />
-  <Polaris.add_image backdrop />
+  <PolarisIcons.add_image />
+  <PolarisIcons.add_image major />
+  <PolarisIcons.add_image class="w-4 h-4" color="highlight" />
+  <PolarisIcons.add_image backdrop />
   ```
   """
   attr :rest, :global,
@@ -264,10 +278,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.add_note />
-  <Polaris.add_note major />
-  <Polaris.add_note class="w-4 h-4" color="highlight" />
-  <Polaris.add_note backdrop />
+  <PolarisIcons.add_note />
+  <PolarisIcons.add_note major />
+  <PolarisIcons.add_note class="w-4 h-4" color="highlight" />
+  <PolarisIcons.add_note backdrop />
   ```
   """
   attr :rest, :global,
@@ -299,10 +313,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.add_product />
-  <Polaris.add_product major />
-  <Polaris.add_product class="w-4 h-4" color="highlight" />
-  <Polaris.add_product backdrop />
+  <PolarisIcons.add_product />
+  <PolarisIcons.add_product major />
+  <PolarisIcons.add_product class="w-4 h-4" color="highlight" />
+  <PolarisIcons.add_product backdrop />
   ```
   """
   attr :rest, :global,
@@ -334,9 +348,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.adjust minor />
-  <Polaris.adjust minor class="w-4 h-4" color="highlight" />
-  <Polaris.adjust minor backdrop />
+  <PolarisIcons.adjust minor />
+  <PolarisIcons.adjust minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.adjust minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -368,10 +382,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.affiliate />
-  <Polaris.affiliate major />
-  <Polaris.affiliate class="w-4 h-4" color="highlight" />
-  <Polaris.affiliate backdrop />
+  <PolarisIcons.affiliate />
+  <PolarisIcons.affiliate major />
+  <PolarisIcons.affiliate class="w-4 h-4" color="highlight" />
+  <PolarisIcons.affiliate backdrop />
   ```
   """
   attr :rest, :global,
@@ -403,9 +417,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.alert minor />
-  <Polaris.alert minor class="w-4 h-4" color="highlight" />
-  <Polaris.alert minor backdrop />
+  <PolarisIcons.alert minor />
+  <PolarisIcons.alert minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.alert minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -437,10 +451,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.analytics />
-  <Polaris.analytics minor />
-  <Polaris.analytics class="w-4 h-4" color="highlight" />
-  <Polaris.analytics minor backdrop />
+  <PolarisIcons.analytics />
+  <PolarisIcons.analytics minor />
+  <PolarisIcons.analytics class="w-4 h-4" color="highlight" />
+  <PolarisIcons.analytics minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -475,9 +489,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.app_extension minor />
-  <Polaris.app_extension minor class="w-4 h-4" color="highlight" />
-  <Polaris.app_extension minor backdrop />
+  <PolarisIcons.app_extension minor />
+  <PolarisIcons.app_extension minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.app_extension minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -509,10 +523,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.apps />
-  <Polaris.apps minor />
-  <Polaris.apps class="w-4 h-4" color="highlight" />
-  <Polaris.apps minor backdrop />
+  <PolarisIcons.apps />
+  <PolarisIcons.apps minor />
+  <PolarisIcons.apps class="w-4 h-4" color="highlight" />
+  <PolarisIcons.apps minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -547,10 +561,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.archive />
-  <Polaris.archive minor />
-  <Polaris.archive class="w-4 h-4" color="highlight" />
-  <Polaris.archive minor backdrop />
+  <PolarisIcons.archive />
+  <PolarisIcons.archive minor />
+  <PolarisIcons.archive class="w-4 h-4" color="highlight" />
+  <PolarisIcons.archive minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -585,9 +599,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.arrow_down minor />
-  <Polaris.arrow_down minor class="w-4 h-4" color="highlight" />
-  <Polaris.arrow_down minor backdrop />
+  <PolarisIcons.arrow_down minor />
+  <PolarisIcons.arrow_down minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.arrow_down minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -619,9 +633,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.arrow_left minor />
-  <Polaris.arrow_left minor class="w-4 h-4" color="highlight" />
-  <Polaris.arrow_left minor backdrop />
+  <PolarisIcons.arrow_left minor />
+  <PolarisIcons.arrow_left minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.arrow_left minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -653,9 +667,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.arrow_right minor />
-  <Polaris.arrow_right minor class="w-4 h-4" color="highlight" />
-  <Polaris.arrow_right minor backdrop />
+  <PolarisIcons.arrow_right minor />
+  <PolarisIcons.arrow_right minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.arrow_right minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -687,9 +701,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.arrow_up minor />
-  <Polaris.arrow_up minor class="w-4 h-4" color="highlight" />
-  <Polaris.arrow_up minor backdrop />
+  <PolarisIcons.arrow_up minor />
+  <PolarisIcons.arrow_up minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.arrow_up minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -721,10 +735,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.attachment />
-  <Polaris.attachment major />
-  <Polaris.attachment class="w-4 h-4" color="highlight" />
-  <Polaris.attachment backdrop />
+  <PolarisIcons.attachment />
+  <PolarisIcons.attachment major />
+  <PolarisIcons.attachment class="w-4 h-4" color="highlight" />
+  <PolarisIcons.attachment backdrop />
   ```
   """
   attr :rest, :global,
@@ -756,10 +770,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.automation />
-  <Polaris.automation major />
-  <Polaris.automation class="w-4 h-4" color="highlight" />
-  <Polaris.automation backdrop />
+  <PolarisIcons.automation />
+  <PolarisIcons.automation major />
+  <PolarisIcons.automation class="w-4 h-4" color="highlight" />
+  <PolarisIcons.automation backdrop />
   ```
   """
   attr :rest, :global,
@@ -791,10 +805,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.backspace />
-  <Polaris.backspace major />
-  <Polaris.backspace class="w-4 h-4" color="highlight" />
-  <Polaris.backspace backdrop />
+  <PolarisIcons.backspace />
+  <PolarisIcons.backspace major />
+  <PolarisIcons.backspace class="w-4 h-4" color="highlight" />
+  <PolarisIcons.backspace backdrop />
   ```
   """
   attr :rest, :global,
@@ -826,10 +840,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.balance />
-  <Polaris.balance major />
-  <Polaris.balance class="w-4 h-4" color="highlight" />
-  <Polaris.balance backdrop />
+  <PolarisIcons.balance />
+  <PolarisIcons.balance major />
+  <PolarisIcons.balance class="w-4 h-4" color="highlight" />
+  <PolarisIcons.balance backdrop />
   ```
   """
   attr :rest, :global,
@@ -861,10 +875,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.bank />
-  <Polaris.bank major />
-  <Polaris.bank class="w-4 h-4" color="highlight" />
-  <Polaris.bank backdrop />
+  <PolarisIcons.bank />
+  <PolarisIcons.bank major />
+  <PolarisIcons.bank class="w-4 h-4" color="highlight" />
+  <PolarisIcons.bank backdrop />
   ```
   """
   attr :rest, :global,
@@ -896,10 +910,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.barcode />
-  <Polaris.barcode major />
-  <Polaris.barcode class="w-4 h-4" color="highlight" />
-  <Polaris.barcode backdrop />
+  <PolarisIcons.barcode />
+  <PolarisIcons.barcode major />
+  <PolarisIcons.barcode class="w-4 h-4" color="highlight" />
+  <PolarisIcons.barcode backdrop />
   ```
   """
   attr :rest, :global,
@@ -931,10 +945,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.behavior />
-  <Polaris.behavior minor />
-  <Polaris.behavior class="w-4 h-4" color="highlight" />
-  <Polaris.behavior minor backdrop />
+  <PolarisIcons.behavior />
+  <PolarisIcons.behavior minor />
+  <PolarisIcons.behavior class="w-4 h-4" color="highlight" />
+  <PolarisIcons.behavior minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -969,10 +983,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.billing_statement_dollar />
-  <Polaris.billing_statement_dollar major />
-  <Polaris.billing_statement_dollar class="w-4 h-4" color="highlight" />
-  <Polaris.billing_statement_dollar backdrop />
+  <PolarisIcons.billing_statement_dollar />
+  <PolarisIcons.billing_statement_dollar major />
+  <PolarisIcons.billing_statement_dollar class="w-4 h-4" color="highlight" />
+  <PolarisIcons.billing_statement_dollar backdrop />
   ```
   """
   attr :rest, :global,
@@ -1004,10 +1018,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.billing_statement_euro />
-  <Polaris.billing_statement_euro major />
-  <Polaris.billing_statement_euro class="w-4 h-4" color="highlight" />
-  <Polaris.billing_statement_euro backdrop />
+  <PolarisIcons.billing_statement_euro />
+  <PolarisIcons.billing_statement_euro major />
+  <PolarisIcons.billing_statement_euro class="w-4 h-4" color="highlight" />
+  <PolarisIcons.billing_statement_euro backdrop />
   ```
   """
   attr :rest, :global,
@@ -1039,10 +1053,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.billing_statement_pound />
-  <Polaris.billing_statement_pound major />
-  <Polaris.billing_statement_pound class="w-4 h-4" color="highlight" />
-  <Polaris.billing_statement_pound backdrop />
+  <PolarisIcons.billing_statement_pound />
+  <PolarisIcons.billing_statement_pound major />
+  <PolarisIcons.billing_statement_pound class="w-4 h-4" color="highlight" />
+  <PolarisIcons.billing_statement_pound backdrop />
   ```
   """
   attr :rest, :global,
@@ -1074,10 +1088,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.billing_statement_rupee />
-  <Polaris.billing_statement_rupee major />
-  <Polaris.billing_statement_rupee class="w-4 h-4" color="highlight" />
-  <Polaris.billing_statement_rupee backdrop />
+  <PolarisIcons.billing_statement_rupee />
+  <PolarisIcons.billing_statement_rupee major />
+  <PolarisIcons.billing_statement_rupee class="w-4 h-4" color="highlight" />
+  <PolarisIcons.billing_statement_rupee backdrop />
   ```
   """
   attr :rest, :global,
@@ -1109,10 +1123,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.billing_statement_yen />
-  <Polaris.billing_statement_yen major />
-  <Polaris.billing_statement_yen class="w-4 h-4" color="highlight" />
-  <Polaris.billing_statement_yen backdrop />
+  <PolarisIcons.billing_statement_yen />
+  <PolarisIcons.billing_statement_yen major />
+  <PolarisIcons.billing_statement_yen class="w-4 h-4" color="highlight" />
+  <PolarisIcons.billing_statement_yen backdrop />
   ```
   """
   attr :rest, :global,
@@ -1144,9 +1158,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.block minor />
-  <Polaris.block minor class="w-4 h-4" color="highlight" />
-  <Polaris.block minor backdrop />
+  <PolarisIcons.block minor />
+  <PolarisIcons.block minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.block minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1178,10 +1192,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.blockquote />
-  <Polaris.blockquote major />
-  <Polaris.blockquote class="w-4 h-4" color="highlight" />
-  <Polaris.blockquote backdrop />
+  <PolarisIcons.blockquote />
+  <PolarisIcons.blockquote major />
+  <PolarisIcons.blockquote class="w-4 h-4" color="highlight" />
+  <PolarisIcons.blockquote backdrop />
   ```
   """
   attr :rest, :global,
@@ -1213,10 +1227,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.blog />
-  <Polaris.blog major />
-  <Polaris.blog class="w-4 h-4" color="highlight" />
-  <Polaris.blog backdrop />
+  <PolarisIcons.blog />
+  <PolarisIcons.blog major />
+  <PolarisIcons.blog class="w-4 h-4" color="highlight" />
+  <PolarisIcons.blog backdrop />
   ```
   """
   attr :rest, :global,
@@ -1248,10 +1262,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.bug />
-  <Polaris.bug major />
-  <Polaris.bug class="w-4 h-4" color="highlight" />
-  <Polaris.bug backdrop />
+  <PolarisIcons.bug />
+  <PolarisIcons.bug major />
+  <PolarisIcons.bug class="w-4 h-4" color="highlight" />
+  <PolarisIcons.bug backdrop />
   ```
   """
   attr :rest, :global,
@@ -1283,9 +1297,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.button minor />
-  <Polaris.button minor class="w-4 h-4" color="highlight" />
-  <Polaris.button minor backdrop />
+  <PolarisIcons.button minor />
+  <PolarisIcons.button minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.button minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1317,10 +1331,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.button_corner_pill />
-  <Polaris.button_corner_pill major />
-  <Polaris.button_corner_pill class="w-4 h-4" color="highlight" />
-  <Polaris.button_corner_pill backdrop />
+  <PolarisIcons.button_corner_pill />
+  <PolarisIcons.button_corner_pill major />
+  <PolarisIcons.button_corner_pill class="w-4 h-4" color="highlight" />
+  <PolarisIcons.button_corner_pill backdrop />
   ```
   """
   attr :rest, :global,
@@ -1352,10 +1366,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.button_corner_rounded />
-  <Polaris.button_corner_rounded major />
-  <Polaris.button_corner_rounded class="w-4 h-4" color="highlight" />
-  <Polaris.button_corner_rounded backdrop />
+  <PolarisIcons.button_corner_rounded />
+  <PolarisIcons.button_corner_rounded major />
+  <PolarisIcons.button_corner_rounded class="w-4 h-4" color="highlight" />
+  <PolarisIcons.button_corner_rounded backdrop />
   ```
   """
   attr :rest, :global,
@@ -1387,10 +1401,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.button_corner_square />
-  <Polaris.button_corner_square major />
-  <Polaris.button_corner_square class="w-4 h-4" color="highlight" />
-  <Polaris.button_corner_square backdrop />
+  <PolarisIcons.button_corner_square />
+  <PolarisIcons.button_corner_square major />
+  <PolarisIcons.button_corner_square class="w-4 h-4" color="highlight" />
+  <PolarisIcons.button_corner_square backdrop />
   ```
   """
   attr :rest, :global,
@@ -1417,10 +1431,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.buy_button />
-  <Polaris.buy_button major />
-  <Polaris.buy_button class="w-4 h-4" color="highlight" />
-  <Polaris.buy_button backdrop />
+  <PolarisIcons.buy_button />
+  <PolarisIcons.buy_button major />
+  <PolarisIcons.buy_button class="w-4 h-4" color="highlight" />
+  <PolarisIcons.buy_button backdrop />
   ```
   """
   attr :rest, :global,
@@ -1452,10 +1466,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.buy_button_button_layout />
-  <Polaris.buy_button_button_layout major />
-  <Polaris.buy_button_button_layout class="w-4 h-4" color="highlight" />
-  <Polaris.buy_button_button_layout backdrop />
+  <PolarisIcons.buy_button_button_layout />
+  <PolarisIcons.buy_button_button_layout major />
+  <PolarisIcons.buy_button_button_layout class="w-4 h-4" color="highlight" />
+  <PolarisIcons.buy_button_button_layout backdrop />
   ```
   """
   attr :rest, :global,
@@ -1487,10 +1501,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.buy_button_horizontal_layout />
-  <Polaris.buy_button_horizontal_layout major />
-  <Polaris.buy_button_horizontal_layout class="w-4 h-4" color="highlight" />
-  <Polaris.buy_button_horizontal_layout backdrop />
+  <PolarisIcons.buy_button_horizontal_layout />
+  <PolarisIcons.buy_button_horizontal_layout major />
+  <PolarisIcons.buy_button_horizontal_layout class="w-4 h-4" color="highlight" />
+  <PolarisIcons.buy_button_horizontal_layout backdrop />
   ```
   """
   attr :rest, :global,
@@ -1522,10 +1536,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.buy_button_vertical_layout />
-  <Polaris.buy_button_vertical_layout major />
-  <Polaris.buy_button_vertical_layout class="w-4 h-4" color="highlight" />
-  <Polaris.buy_button_vertical_layout backdrop />
+  <PolarisIcons.buy_button_vertical_layout />
+  <PolarisIcons.buy_button_vertical_layout major />
+  <PolarisIcons.buy_button_vertical_layout class="w-4 h-4" color="highlight" />
+  <PolarisIcons.buy_button_vertical_layout backdrop />
   ```
   """
   attr :rest, :global,
@@ -1557,10 +1571,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.calendar />
-  <Polaris.calendar minor />
-  <Polaris.calendar class="w-4 h-4" color="highlight" />
-  <Polaris.calendar minor backdrop />
+  <PolarisIcons.calendar />
+  <PolarisIcons.calendar minor />
+  <PolarisIcons.calendar class="w-4 h-4" color="highlight" />
+  <PolarisIcons.calendar minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1595,10 +1609,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.calendar_tick />
-  <Polaris.calendar_tick major />
-  <Polaris.calendar_tick class="w-4 h-4" color="highlight" />
-  <Polaris.calendar_tick backdrop />
+  <PolarisIcons.calendar_tick />
+  <PolarisIcons.calendar_tick major />
+  <PolarisIcons.calendar_tick class="w-4 h-4" color="highlight" />
+  <PolarisIcons.calendar_tick backdrop />
   ```
   """
   attr :rest, :global,
@@ -1630,10 +1644,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.camera />
-  <Polaris.camera major />
-  <Polaris.camera class="w-4 h-4" color="highlight" />
-  <Polaris.camera backdrop />
+  <PolarisIcons.camera />
+  <PolarisIcons.camera major />
+  <PolarisIcons.camera class="w-4 h-4" color="highlight" />
+  <PolarisIcons.camera backdrop />
   ```
   """
   attr :rest, :global,
@@ -1665,10 +1679,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cancel />
-  <Polaris.cancel minor />
-  <Polaris.cancel class="w-4 h-4" color="highlight" />
-  <Polaris.cancel minor backdrop />
+  <PolarisIcons.cancel />
+  <PolarisIcons.cancel minor />
+  <PolarisIcons.cancel class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cancel minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1703,9 +1717,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cancel_small minor />
-  <Polaris.cancel_small minor class="w-4 h-4" color="highlight" />
-  <Polaris.cancel_small minor backdrop />
+  <PolarisIcons.cancel_small minor />
+  <PolarisIcons.cancel_small minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cancel_small minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1737,10 +1751,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.capital />
-  <Polaris.capital major />
-  <Polaris.capital class="w-4 h-4" color="highlight" />
-  <Polaris.capital backdrop />
+  <PolarisIcons.capital />
+  <PolarisIcons.capital major />
+  <PolarisIcons.capital class="w-4 h-4" color="highlight" />
+  <PolarisIcons.capital backdrop />
   ```
   """
   attr :rest, :global,
@@ -1772,9 +1786,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.capture_payment minor />
-  <Polaris.capture_payment minor class="w-4 h-4" color="highlight" />
-  <Polaris.capture_payment minor backdrop />
+  <PolarisIcons.capture_payment minor />
+  <PolarisIcons.capture_payment minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.capture_payment minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1806,10 +1820,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.card_reader />
-  <Polaris.card_reader major />
-  <Polaris.card_reader class="w-4 h-4" color="highlight" />
-  <Polaris.card_reader backdrop />
+  <PolarisIcons.card_reader />
+  <PolarisIcons.card_reader major />
+  <PolarisIcons.card_reader class="w-4 h-4" color="highlight" />
+  <PolarisIcons.card_reader backdrop />
   ```
   """
   attr :rest, :global,
@@ -1841,10 +1855,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.card_reader_chip />
-  <Polaris.card_reader_chip major />
-  <Polaris.card_reader_chip class="w-4 h-4" color="highlight" />
-  <Polaris.card_reader_chip backdrop />
+  <PolarisIcons.card_reader_chip />
+  <PolarisIcons.card_reader_chip major />
+  <PolarisIcons.card_reader_chip class="w-4 h-4" color="highlight" />
+  <PolarisIcons.card_reader_chip backdrop />
   ```
   """
   attr :rest, :global,
@@ -1876,10 +1890,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.card_reader_tap />
-  <Polaris.card_reader_tap major />
-  <Polaris.card_reader_tap class="w-4 h-4" color="highlight" />
-  <Polaris.card_reader_tap backdrop />
+  <PolarisIcons.card_reader_tap />
+  <PolarisIcons.card_reader_tap major />
+  <PolarisIcons.card_reader_tap class="w-4 h-4" color="highlight" />
+  <PolarisIcons.card_reader_tap backdrop />
   ```
   """
   attr :rest, :global,
@@ -1911,9 +1925,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.caret_down minor />
-  <Polaris.caret_down minor class="w-4 h-4" color="highlight" />
-  <Polaris.caret_down minor backdrop />
+  <PolarisIcons.caret_down minor />
+  <PolarisIcons.caret_down minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.caret_down minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1945,9 +1959,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.caret_up minor />
-  <Polaris.caret_up minor class="w-4 h-4" color="highlight" />
-  <Polaris.caret_up minor backdrop />
+  <PolarisIcons.caret_up minor />
+  <PolarisIcons.caret_up minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.caret_up minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -1979,10 +1993,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cart />
-  <Polaris.cart major />
-  <Polaris.cart class="w-4 h-4" color="highlight" />
-  <Polaris.cart backdrop />
+  <PolarisIcons.cart />
+  <PolarisIcons.cart major />
+  <PolarisIcons.cart class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cart backdrop />
   ```
   """
   attr :rest, :global,
@@ -2014,10 +2028,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cart_down />
-  <Polaris.cart_down major />
-  <Polaris.cart_down class="w-4 h-4" color="highlight" />
-  <Polaris.cart_down backdrop />
+  <PolarisIcons.cart_down />
+  <PolarisIcons.cart_down major />
+  <PolarisIcons.cart_down class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cart_down backdrop />
   ```
   """
   attr :rest, :global,
@@ -2049,10 +2063,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cart_up />
-  <Polaris.cart_up major />
-  <Polaris.cart_up class="w-4 h-4" color="highlight" />
-  <Polaris.cart_up backdrop />
+  <PolarisIcons.cart_up />
+  <PolarisIcons.cart_up major />
+  <PolarisIcons.cart_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cart_up backdrop />
   ```
   """
   attr :rest, :global,
@@ -2084,10 +2098,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cash_dollar />
-  <Polaris.cash_dollar minor />
-  <Polaris.cash_dollar class="w-4 h-4" color="highlight" />
-  <Polaris.cash_dollar minor backdrop />
+  <PolarisIcons.cash_dollar />
+  <PolarisIcons.cash_dollar minor />
+  <PolarisIcons.cash_dollar class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cash_dollar minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2122,10 +2136,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cash_euro />
-  <Polaris.cash_euro major />
-  <Polaris.cash_euro class="w-4 h-4" color="highlight" />
-  <Polaris.cash_euro backdrop />
+  <PolarisIcons.cash_euro />
+  <PolarisIcons.cash_euro major />
+  <PolarisIcons.cash_euro class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cash_euro backdrop />
   ```
   """
   attr :rest, :global,
@@ -2157,10 +2171,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cash_pound />
-  <Polaris.cash_pound major />
-  <Polaris.cash_pound class="w-4 h-4" color="highlight" />
-  <Polaris.cash_pound backdrop />
+  <PolarisIcons.cash_pound />
+  <PolarisIcons.cash_pound major />
+  <PolarisIcons.cash_pound class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cash_pound backdrop />
   ```
   """
   attr :rest, :global,
@@ -2192,10 +2206,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cash_rupee />
-  <Polaris.cash_rupee major />
-  <Polaris.cash_rupee class="w-4 h-4" color="highlight" />
-  <Polaris.cash_rupee backdrop />
+  <PolarisIcons.cash_rupee />
+  <PolarisIcons.cash_rupee major />
+  <PolarisIcons.cash_rupee class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cash_rupee backdrop />
   ```
   """
   attr :rest, :global,
@@ -2227,10 +2241,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.cash_yen />
-  <Polaris.cash_yen major />
-  <Polaris.cash_yen class="w-4 h-4" color="highlight" />
-  <Polaris.cash_yen backdrop />
+  <PolarisIcons.cash_yen />
+  <PolarisIcons.cash_yen major />
+  <PolarisIcons.cash_yen class="w-4 h-4" color="highlight" />
+  <PolarisIcons.cash_yen backdrop />
   ```
   """
   attr :rest, :global,
@@ -2262,10 +2276,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.categories />
-  <Polaris.categories major />
-  <Polaris.categories class="w-4 h-4" color="highlight" />
-  <Polaris.categories backdrop />
+  <PolarisIcons.categories />
+  <PolarisIcons.categories major />
+  <PolarisIcons.categories class="w-4 h-4" color="highlight" />
+  <PolarisIcons.categories backdrop />
   ```
   """
   attr :rest, :global,
@@ -2297,10 +2311,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.channels />
-  <Polaris.channels major />
-  <Polaris.channels class="w-4 h-4" color="highlight" />
-  <Polaris.channels backdrop />
+  <PolarisIcons.channels />
+  <PolarisIcons.channels major />
+  <PolarisIcons.channels class="w-4 h-4" color="highlight" />
+  <PolarisIcons.channels backdrop />
   ```
   """
   attr :rest, :global,
@@ -2332,10 +2346,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.chat />
-  <Polaris.chat major />
-  <Polaris.chat class="w-4 h-4" color="highlight" />
-  <Polaris.chat backdrop />
+  <PolarisIcons.chat />
+  <PolarisIcons.chat major />
+  <PolarisIcons.chat class="w-4 h-4" color="highlight" />
+  <PolarisIcons.chat backdrop />
   ```
   """
   attr :rest, :global,
@@ -2367,10 +2381,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.checklist />
-  <Polaris.checklist major />
-  <Polaris.checklist class="w-4 h-4" color="highlight" />
-  <Polaris.checklist backdrop />
+  <PolarisIcons.checklist />
+  <PolarisIcons.checklist major />
+  <PolarisIcons.checklist class="w-4 h-4" color="highlight" />
+  <PolarisIcons.checklist backdrop />
   ```
   """
   attr :rest, :global,
@@ -2402,10 +2416,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.checklist_alternate />
-  <Polaris.checklist_alternate major />
-  <Polaris.checklist_alternate class="w-4 h-4" color="highlight" />
-  <Polaris.checklist_alternate backdrop />
+  <PolarisIcons.checklist_alternate />
+  <PolarisIcons.checklist_alternate major />
+  <PolarisIcons.checklist_alternate class="w-4 h-4" color="highlight" />
+  <PolarisIcons.checklist_alternate backdrop />
   ```
   """
   attr :rest, :global,
@@ -2437,10 +2451,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.checkout />
-  <Polaris.checkout major />
-  <Polaris.checkout class="w-4 h-4" color="highlight" />
-  <Polaris.checkout backdrop />
+  <PolarisIcons.checkout />
+  <PolarisIcons.checkout major />
+  <PolarisIcons.checkout class="w-4 h-4" color="highlight" />
+  <PolarisIcons.checkout backdrop />
   ```
   """
   attr :rest, :global,
@@ -2472,9 +2486,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.chevron_down minor />
-  <Polaris.chevron_down minor class="w-4 h-4" color="highlight" />
-  <Polaris.chevron_down minor backdrop />
+  <PolarisIcons.chevron_down minor />
+  <PolarisIcons.chevron_down minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.chevron_down minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2506,9 +2520,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.chevron_left minor />
-  <Polaris.chevron_left minor class="w-4 h-4" color="highlight" />
-  <Polaris.chevron_left minor backdrop />
+  <PolarisIcons.chevron_left minor />
+  <PolarisIcons.chevron_left minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.chevron_left minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2540,9 +2554,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.chevron_right minor />
-  <Polaris.chevron_right minor class="w-4 h-4" color="highlight" />
-  <Polaris.chevron_right minor backdrop />
+  <PolarisIcons.chevron_right minor />
+  <PolarisIcons.chevron_right minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.chevron_right minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2574,9 +2588,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.chevron_up minor />
-  <Polaris.chevron_up minor class="w-4 h-4" color="highlight" />
-  <Polaris.chevron_up minor backdrop />
+  <PolarisIcons.chevron_up minor />
+  <PolarisIcons.chevron_up minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.chevron_up minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2608,10 +2622,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_alert />
-  <Polaris.circle_alert major />
-  <Polaris.circle_alert class="w-4 h-4" color="highlight" />
-  <Polaris.circle_alert backdrop />
+  <PolarisIcons.circle_alert />
+  <PolarisIcons.circle_alert major />
+  <PolarisIcons.circle_alert class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_alert backdrop />
   ```
   """
   attr :rest, :global,
@@ -2643,10 +2657,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_cancel />
-  <Polaris.circle_cancel minor />
-  <Polaris.circle_cancel class="w-4 h-4" color="highlight" />
-  <Polaris.circle_cancel minor backdrop />
+  <PolarisIcons.circle_cancel />
+  <PolarisIcons.circle_cancel minor />
+  <PolarisIcons.circle_cancel class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_cancel minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2681,9 +2695,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_chevron_down minor />
-  <Polaris.circle_chevron_down minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_chevron_down minor backdrop />
+  <PolarisIcons.circle_chevron_down minor />
+  <PolarisIcons.circle_chevron_down minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_chevron_down minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2715,9 +2729,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_chevron_left minor />
-  <Polaris.circle_chevron_left minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_chevron_left minor backdrop />
+  <PolarisIcons.circle_chevron_left minor />
+  <PolarisIcons.circle_chevron_left minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_chevron_left minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2749,9 +2763,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_chevron_right minor />
-  <Polaris.circle_chevron_right minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_chevron_right minor backdrop />
+  <PolarisIcons.circle_chevron_right minor />
+  <PolarisIcons.circle_chevron_right minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_chevron_right minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2783,9 +2797,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_chevron_up minor />
-  <Polaris.circle_chevron_up minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_chevron_up minor backdrop />
+  <PolarisIcons.circle_chevron_up minor />
+  <PolarisIcons.circle_chevron_up minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_chevron_up minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2817,9 +2831,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_disable minor />
-  <Polaris.circle_disable minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_disable minor backdrop />
+  <PolarisIcons.circle_disable minor />
+  <PolarisIcons.circle_disable minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_disable minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -2851,10 +2865,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_disabled />
-  <Polaris.circle_disabled major />
-  <Polaris.circle_disabled class="w-4 h-4" color="highlight" />
-  <Polaris.circle_disabled backdrop />
+  <PolarisIcons.circle_disabled />
+  <PolarisIcons.circle_disabled major />
+  <PolarisIcons.circle_disabled class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_disabled backdrop />
   ```
   """
   attr :rest, :global,
@@ -2886,10 +2900,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_dots />
-  <Polaris.circle_dots major />
-  <Polaris.circle_dots class="w-4 h-4" color="highlight" />
-  <Polaris.circle_dots backdrop />
+  <PolarisIcons.circle_dots />
+  <PolarisIcons.circle_dots major />
+  <PolarisIcons.circle_dots class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_dots backdrop />
   ```
   """
   attr :rest, :global,
@@ -2921,10 +2935,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_down />
-  <Polaris.circle_down major />
-  <Polaris.circle_down class="w-4 h-4" color="highlight" />
-  <Polaris.circle_down backdrop />
+  <PolarisIcons.circle_down />
+  <PolarisIcons.circle_down major />
+  <PolarisIcons.circle_down class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_down backdrop />
   ```
   """
   attr :rest, :global,
@@ -2956,10 +2970,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_information />
-  <Polaris.circle_information major />
-  <Polaris.circle_information class="w-4 h-4" color="highlight" />
-  <Polaris.circle_information backdrop />
+  <PolarisIcons.circle_information />
+  <PolarisIcons.circle_information major />
+  <PolarisIcons.circle_information class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_information backdrop />
   ```
   """
   attr :rest, :global,
@@ -2991,10 +3005,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_left />
-  <Polaris.circle_left major />
-  <Polaris.circle_left class="w-4 h-4" color="highlight" />
-  <Polaris.circle_left backdrop />
+  <PolarisIcons.circle_left />
+  <PolarisIcons.circle_left major />
+  <PolarisIcons.circle_left class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_left backdrop />
   ```
   """
   attr :rest, :global,
@@ -3026,10 +3040,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_minus />
-  <Polaris.circle_minus minor />
-  <Polaris.circle_minus class="w-4 h-4" color="highlight" />
-  <Polaris.circle_minus minor backdrop />
+  <PolarisIcons.circle_minus />
+  <PolarisIcons.circle_minus minor />
+  <PolarisIcons.circle_minus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_minus minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3064,9 +3078,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_minus_outline minor />
-  <Polaris.circle_minus_outline minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_minus_outline minor backdrop />
+  <PolarisIcons.circle_minus_outline minor />
+  <PolarisIcons.circle_minus_outline minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_minus_outline minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3098,10 +3112,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_plus />
-  <Polaris.circle_plus minor />
-  <Polaris.circle_plus class="w-4 h-4" color="highlight" />
-  <Polaris.circle_plus minor backdrop />
+  <PolarisIcons.circle_plus />
+  <PolarisIcons.circle_plus minor />
+  <PolarisIcons.circle_plus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_plus minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3136,9 +3150,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_plus_outline minor />
-  <Polaris.circle_plus_outline minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_plus_outline minor backdrop />
+  <PolarisIcons.circle_plus_outline minor />
+  <PolarisIcons.circle_plus_outline minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_plus_outline minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3170,10 +3184,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_right />
-  <Polaris.circle_right major />
-  <Polaris.circle_right class="w-4 h-4" color="highlight" />
-  <Polaris.circle_right backdrop />
+  <PolarisIcons.circle_right />
+  <PolarisIcons.circle_right major />
+  <PolarisIcons.circle_right class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_right backdrop />
   ```
   """
   attr :rest, :global,
@@ -3205,10 +3219,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_tick />
-  <Polaris.circle_tick minor />
-  <Polaris.circle_tick class="w-4 h-4" color="highlight" />
-  <Polaris.circle_tick minor backdrop />
+  <PolarisIcons.circle_tick />
+  <PolarisIcons.circle_tick minor />
+  <PolarisIcons.circle_tick class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_tick minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3243,9 +3257,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_tick_outline minor />
-  <Polaris.circle_tick_outline minor class="w-4 h-4" color="highlight" />
-  <Polaris.circle_tick_outline minor backdrop />
+  <PolarisIcons.circle_tick_outline minor />
+  <PolarisIcons.circle_tick_outline minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_tick_outline minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3277,10 +3291,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.circle_up />
-  <Polaris.circle_up major />
-  <Polaris.circle_up class="w-4 h-4" color="highlight" />
-  <Polaris.circle_up backdrop />
+  <PolarisIcons.circle_up />
+  <PolarisIcons.circle_up major />
+  <PolarisIcons.circle_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.circle_up backdrop />
   ```
   """
   attr :rest, :global,
@@ -3312,9 +3326,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.clipboard minor />
-  <Polaris.clipboard minor class="w-4 h-4" color="highlight" />
-  <Polaris.clipboard minor backdrop />
+  <PolarisIcons.clipboard minor />
+  <PolarisIcons.clipboard minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.clipboard minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3346,10 +3360,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.clock />
-  <Polaris.clock minor />
-  <Polaris.clock class="w-4 h-4" color="highlight" />
-  <Polaris.clock minor backdrop />
+  <PolarisIcons.clock />
+  <PolarisIcons.clock minor />
+  <PolarisIcons.clock class="w-4 h-4" color="highlight" />
+  <PolarisIcons.clock minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3384,10 +3398,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.code />
-  <Polaris.code minor />
-  <Polaris.code class="w-4 h-4" color="highlight" />
-  <Polaris.code minor backdrop />
+  <PolarisIcons.code />
+  <PolarisIcons.code minor />
+  <PolarisIcons.code class="w-4 h-4" color="highlight" />
+  <PolarisIcons.code minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3422,10 +3436,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.collections />
-  <Polaris.collections major />
-  <Polaris.collections class="w-4 h-4" color="highlight" />
-  <Polaris.collections backdrop />
+  <PolarisIcons.collections />
+  <PolarisIcons.collections major />
+  <PolarisIcons.collections class="w-4 h-4" color="highlight" />
+  <PolarisIcons.collections backdrop />
   ```
   """
   attr :rest, :global,
@@ -3457,9 +3471,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.color_none minor />
-  <Polaris.color_none minor class="w-4 h-4" color="highlight" />
-  <Polaris.color_none minor backdrop />
+  <PolarisIcons.color_none minor />
+  <PolarisIcons.color_none minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.color_none minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3491,10 +3505,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.colors />
-  <Polaris.colors major />
-  <Polaris.colors class="w-4 h-4" color="highlight" />
-  <Polaris.colors backdrop />
+  <PolarisIcons.colors />
+  <PolarisIcons.colors major />
+  <PolarisIcons.colors class="w-4 h-4" color="highlight" />
+  <PolarisIcons.colors backdrop />
   ```
   """
   attr :rest, :global,
@@ -3526,10 +3540,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.column1 />
-  <Polaris.column1 major />
-  <Polaris.column1 class="w-4 h-4" color="highlight" />
-  <Polaris.column1 backdrop />
+  <PolarisIcons.column1 />
+  <PolarisIcons.column1 major />
+  <PolarisIcons.column1 class="w-4 h-4" color="highlight" />
+  <PolarisIcons.column1 backdrop />
   ```
   """
   attr :rest, :global,
@@ -3561,10 +3575,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.column_with_text />
-  <Polaris.column_with_text major />
-  <Polaris.column_with_text class="w-4 h-4" color="highlight" />
-  <Polaris.column_with_text backdrop />
+  <PolarisIcons.column_with_text />
+  <PolarisIcons.column_with_text major />
+  <PolarisIcons.column_with_text class="w-4 h-4" color="highlight" />
+  <PolarisIcons.column_with_text backdrop />
   ```
   """
   attr :rest, :global,
@@ -3596,10 +3610,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.columns2 />
-  <Polaris.columns2 major />
-  <Polaris.columns2 class="w-4 h-4" color="highlight" />
-  <Polaris.columns2 backdrop />
+  <PolarisIcons.columns2 />
+  <PolarisIcons.columns2 major />
+  <PolarisIcons.columns2 class="w-4 h-4" color="highlight" />
+  <PolarisIcons.columns2 backdrop />
   ```
   """
   attr :rest, :global,
@@ -3631,10 +3645,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.columns3 />
-  <Polaris.columns3 minor />
-  <Polaris.columns3 class="w-4 h-4" color="highlight" />
-  <Polaris.columns3 minor backdrop />
+  <PolarisIcons.columns3 />
+  <PolarisIcons.columns3 minor />
+  <PolarisIcons.columns3 class="w-4 h-4" color="highlight" />
+  <PolarisIcons.columns3 minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3669,10 +3683,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.compose />
-  <Polaris.compose major />
-  <Polaris.compose class="w-4 h-4" color="highlight" />
-  <Polaris.compose backdrop />
+  <PolarisIcons.compose />
+  <PolarisIcons.compose major />
+  <PolarisIcons.compose class="w-4 h-4" color="highlight" />
+  <PolarisIcons.compose backdrop />
   ```
   """
   attr :rest, :global,
@@ -3704,10 +3718,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.confetti />
-  <Polaris.confetti major />
-  <Polaris.confetti class="w-4 h-4" color="highlight" />
-  <Polaris.confetti backdrop />
+  <PolarisIcons.confetti />
+  <PolarisIcons.confetti major />
+  <PolarisIcons.confetti class="w-4 h-4" color="highlight" />
+  <PolarisIcons.confetti backdrop />
   ```
   """
   attr :rest, :global,
@@ -3739,9 +3753,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.connect minor />
-  <Polaris.connect minor class="w-4 h-4" color="highlight" />
-  <Polaris.connect minor backdrop />
+  <PolarisIcons.connect minor />
+  <PolarisIcons.connect minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.connect minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3773,9 +3787,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.conversation minor />
-  <Polaris.conversation minor class="w-4 h-4" color="highlight" />
-  <Polaris.conversation minor backdrop />
+  <PolarisIcons.conversation minor />
+  <PolarisIcons.conversation minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.conversation minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3807,10 +3821,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.credit_card />
-  <Polaris.credit_card major />
-  <Polaris.credit_card class="w-4 h-4" color="highlight" />
-  <Polaris.credit_card backdrop />
+  <PolarisIcons.credit_card />
+  <PolarisIcons.credit_card major />
+  <PolarisIcons.credit_card class="w-4 h-4" color="highlight" />
+  <PolarisIcons.credit_card backdrop />
   ```
   """
   attr :rest, :global,
@@ -3842,10 +3856,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.credit_card_cancel />
-  <Polaris.credit_card_cancel major />
-  <Polaris.credit_card_cancel class="w-4 h-4" color="highlight" />
-  <Polaris.credit_card_cancel backdrop />
+  <PolarisIcons.credit_card_cancel />
+  <PolarisIcons.credit_card_cancel major />
+  <PolarisIcons.credit_card_cancel class="w-4 h-4" color="highlight" />
+  <PolarisIcons.credit_card_cancel backdrop />
   ```
   """
   attr :rest, :global,
@@ -3879,10 +3893,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.credit_card_percent />
-  <Polaris.credit_card_percent major />
-  <Polaris.credit_card_percent class="w-4 h-4" color="highlight" />
-  <Polaris.credit_card_percent backdrop />
+  <PolarisIcons.credit_card_percent />
+  <PolarisIcons.credit_card_percent major />
+  <PolarisIcons.credit_card_percent class="w-4 h-4" color="highlight" />
+  <PolarisIcons.credit_card_percent backdrop />
   ```
   """
   attr :rest, :global,
@@ -3914,10 +3928,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.credit_card_secure />
-  <Polaris.credit_card_secure major />
-  <Polaris.credit_card_secure class="w-4 h-4" color="highlight" />
-  <Polaris.credit_card_secure backdrop />
+  <PolarisIcons.credit_card_secure />
+  <PolarisIcons.credit_card_secure major />
+  <PolarisIcons.credit_card_secure class="w-4 h-4" color="highlight" />
+  <PolarisIcons.credit_card_secure backdrop />
   ```
   """
   attr :rest, :global,
@@ -3949,9 +3963,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.currency_convert minor />
-  <Polaris.currency_convert minor class="w-4 h-4" color="highlight" />
-  <Polaris.currency_convert minor backdrop />
+  <PolarisIcons.currency_convert minor />
+  <PolarisIcons.currency_convert minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.currency_convert minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -3983,10 +3997,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.customer_minus />
-  <Polaris.customer_minus major />
-  <Polaris.customer_minus class="w-4 h-4" color="highlight" />
-  <Polaris.customer_minus backdrop />
+  <PolarisIcons.customer_minus />
+  <PolarisIcons.customer_minus major />
+  <PolarisIcons.customer_minus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.customer_minus backdrop />
   ```
   """
   attr :rest, :global,
@@ -4018,10 +4032,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.customer_plus />
-  <Polaris.customer_plus major />
-  <Polaris.customer_plus class="w-4 h-4" color="highlight" />
-  <Polaris.customer_plus backdrop />
+  <PolarisIcons.customer_plus />
+  <PolarisIcons.customer_plus major />
+  <PolarisIcons.customer_plus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.customer_plus backdrop />
   ```
   """
   attr :rest, :global,
@@ -4053,10 +4067,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.customers />
-  <Polaris.customers minor />
-  <Polaris.customers class="w-4 h-4" color="highlight" />
-  <Polaris.customers minor backdrop />
+  <PolarisIcons.customers />
+  <PolarisIcons.customers minor />
+  <PolarisIcons.customers class="w-4 h-4" color="highlight" />
+  <PolarisIcons.customers minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4091,10 +4105,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.data_visualization />
-  <Polaris.data_visualization major />
-  <Polaris.data_visualization class="w-4 h-4" color="highlight" />
-  <Polaris.data_visualization backdrop />
+  <PolarisIcons.data_visualization />
+  <PolarisIcons.data_visualization major />
+  <PolarisIcons.data_visualization class="w-4 h-4" color="highlight" />
+  <PolarisIcons.data_visualization backdrop />
   ```
   """
   attr :rest, :global,
@@ -4126,10 +4140,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.delete />
-  <Polaris.delete minor />
-  <Polaris.delete class="w-4 h-4" color="highlight" />
-  <Polaris.delete minor backdrop />
+  <PolarisIcons.delete />
+  <PolarisIcons.delete minor />
+  <PolarisIcons.delete class="w-4 h-4" color="highlight" />
+  <PolarisIcons.delete minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4164,10 +4178,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.desktop />
-  <Polaris.desktop major />
-  <Polaris.desktop class="w-4 h-4" color="highlight" />
-  <Polaris.desktop backdrop />
+  <PolarisIcons.desktop />
+  <PolarisIcons.desktop major />
+  <PolarisIcons.desktop class="w-4 h-4" color="highlight" />
+  <PolarisIcons.desktop backdrop />
   ```
   """
   attr :rest, :global,
@@ -4199,10 +4213,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.detailed_pop_up />
-  <Polaris.detailed_pop_up major />
-  <Polaris.detailed_pop_up class="w-4 h-4" color="highlight" />
-  <Polaris.detailed_pop_up backdrop />
+  <PolarisIcons.detailed_pop_up />
+  <PolarisIcons.detailed_pop_up major />
+  <PolarisIcons.detailed_pop_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.detailed_pop_up backdrop />
   ```
   """
   attr :rest, :global,
@@ -4234,10 +4248,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.diamond_alert />
-  <Polaris.diamond_alert major />
-  <Polaris.diamond_alert class="w-4 h-4" color="highlight" />
-  <Polaris.diamond_alert backdrop />
+  <PolarisIcons.diamond_alert />
+  <PolarisIcons.diamond_alert major />
+  <PolarisIcons.diamond_alert class="w-4 h-4" color="highlight" />
+  <PolarisIcons.diamond_alert backdrop />
   ```
   """
   attr :rest, :global,
@@ -4269,10 +4283,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.digital_media_receiver />
-  <Polaris.digital_media_receiver major />
-  <Polaris.digital_media_receiver class="w-4 h-4" color="highlight" />
-  <Polaris.digital_media_receiver backdrop />
+  <PolarisIcons.digital_media_receiver />
+  <PolarisIcons.digital_media_receiver major />
+  <PolarisIcons.digital_media_receiver class="w-4 h-4" color="highlight" />
+  <PolarisIcons.digital_media_receiver backdrop />
   ```
   """
   attr :rest, :global,
@@ -4304,10 +4318,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.discount_automatic />
-  <Polaris.discount_automatic major />
-  <Polaris.discount_automatic class="w-4 h-4" color="highlight" />
-  <Polaris.discount_automatic backdrop />
+  <PolarisIcons.discount_automatic />
+  <PolarisIcons.discount_automatic major />
+  <PolarisIcons.discount_automatic class="w-4 h-4" color="highlight" />
+  <PolarisIcons.discount_automatic backdrop />
   ```
   """
   attr :rest, :global,
@@ -4339,10 +4353,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.discount_code />
-  <Polaris.discount_code major />
-  <Polaris.discount_code class="w-4 h-4" color="highlight" />
-  <Polaris.discount_code backdrop />
+  <PolarisIcons.discount_code />
+  <PolarisIcons.discount_code major />
+  <PolarisIcons.discount_code class="w-4 h-4" color="highlight" />
+  <PolarisIcons.discount_code backdrop />
   ```
   """
   attr :rest, :global,
@@ -4374,10 +4388,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.discounts />
-  <Polaris.discounts minor />
-  <Polaris.discounts class="w-4 h-4" color="highlight" />
-  <Polaris.discounts minor backdrop />
+  <PolarisIcons.discounts />
+  <PolarisIcons.discounts minor />
+  <PolarisIcons.discounts class="w-4 h-4" color="highlight" />
+  <PolarisIcons.discounts minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4412,9 +4426,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.dispute minor />
-  <Polaris.dispute minor class="w-4 h-4" color="highlight" />
-  <Polaris.dispute minor backdrop />
+  <PolarisIcons.dispute minor />
+  <PolarisIcons.dispute minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.dispute minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4446,10 +4460,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.dns_settings />
-  <Polaris.dns_settings major />
-  <Polaris.dns_settings class="w-4 h-4" color="highlight" />
-  <Polaris.dns_settings backdrop />
+  <PolarisIcons.dns_settings />
+  <PolarisIcons.dns_settings major />
+  <PolarisIcons.dns_settings class="w-4 h-4" color="highlight" />
+  <PolarisIcons.dns_settings backdrop />
   ```
   """
   attr :rest, :global,
@@ -4481,10 +4495,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.domain_new />
-  <Polaris.domain_new major />
-  <Polaris.domain_new class="w-4 h-4" color="highlight" />
-  <Polaris.domain_new backdrop />
+  <PolarisIcons.domain_new />
+  <PolarisIcons.domain_new major />
+  <PolarisIcons.domain_new class="w-4 h-4" color="highlight" />
+  <PolarisIcons.domain_new backdrop />
   ```
   """
   attr :rest, :global,
@@ -4516,9 +4530,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.domain_redirect minor />
-  <Polaris.domain_redirect minor class="w-4 h-4" color="highlight" />
-  <Polaris.domain_redirect minor backdrop />
+  <PolarisIcons.domain_redirect minor />
+  <PolarisIcons.domain_redirect minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.domain_redirect minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4550,10 +4564,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.domains />
-  <Polaris.domains major />
-  <Polaris.domains class="w-4 h-4" color="highlight" />
-  <Polaris.domains backdrop />
+  <PolarisIcons.domains />
+  <PolarisIcons.domains major />
+  <PolarisIcons.domains class="w-4 h-4" color="highlight" />
+  <PolarisIcons.domains backdrop />
   ```
   """
   attr :rest, :global,
@@ -4585,10 +4599,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.draft_orders />
-  <Polaris.draft_orders major />
-  <Polaris.draft_orders class="w-4 h-4" color="highlight" />
-  <Polaris.draft_orders backdrop />
+  <PolarisIcons.draft_orders />
+  <PolarisIcons.draft_orders major />
+  <PolarisIcons.draft_orders class="w-4 h-4" color="highlight" />
+  <PolarisIcons.draft_orders backdrop />
   ```
   """
   attr :rest, :global,
@@ -4620,10 +4634,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.drag_drop />
-  <Polaris.drag_drop major />
-  <Polaris.drag_drop class="w-4 h-4" color="highlight" />
-  <Polaris.drag_drop backdrop />
+  <PolarisIcons.drag_drop />
+  <PolarisIcons.drag_drop major />
+  <PolarisIcons.drag_drop class="w-4 h-4" color="highlight" />
+  <PolarisIcons.drag_drop backdrop />
   ```
   """
   attr :rest, :global,
@@ -4655,9 +4669,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.drag_handle minor />
-  <Polaris.drag_handle minor class="w-4 h-4" color="highlight" />
-  <Polaris.drag_handle minor backdrop />
+  <PolarisIcons.drag_handle minor />
+  <PolarisIcons.drag_handle minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.drag_handle minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4689,9 +4703,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.dropdown minor />
-  <Polaris.dropdown minor class="w-4 h-4" color="highlight" />
-  <Polaris.dropdown minor backdrop />
+  <PolarisIcons.dropdown minor />
+  <PolarisIcons.dropdown minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.dropdown minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4723,9 +4737,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.duplicate minor />
-  <Polaris.duplicate minor class="w-4 h-4" color="highlight" />
-  <Polaris.duplicate minor backdrop />
+  <PolarisIcons.duplicate minor />
+  <PolarisIcons.duplicate minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.duplicate minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4757,10 +4771,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.dynamic_source />
-  <Polaris.dynamic_source minor />
-  <Polaris.dynamic_source class="w-4 h-4" color="highlight" />
-  <Polaris.dynamic_source minor backdrop />
+  <PolarisIcons.dynamic_source />
+  <PolarisIcons.dynamic_source minor />
+  <PolarisIcons.dynamic_source class="w-4 h-4" color="highlight" />
+  <PolarisIcons.dynamic_source minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4795,10 +4809,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.edit />
-  <Polaris.edit minor />
-  <Polaris.edit class="w-4 h-4" color="highlight" />
-  <Polaris.edit minor backdrop />
+  <PolarisIcons.edit />
+  <PolarisIcons.edit minor />
+  <PolarisIcons.edit class="w-4 h-4" color="highlight" />
+  <PolarisIcons.edit minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4833,10 +4847,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.email />
-  <Polaris.email major />
-  <Polaris.email class="w-4 h-4" color="highlight" />
-  <Polaris.email backdrop />
+  <PolarisIcons.email />
+  <PolarisIcons.email major />
+  <PolarisIcons.email class="w-4 h-4" color="highlight" />
+  <PolarisIcons.email backdrop />
   ```
   """
   attr :rest, :global,
@@ -4868,10 +4882,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.email_newsletter />
-  <Polaris.email_newsletter major />
-  <Polaris.email_newsletter class="w-4 h-4" color="highlight" />
-  <Polaris.email_newsletter backdrop />
+  <PolarisIcons.email_newsletter />
+  <PolarisIcons.email_newsletter major />
+  <PolarisIcons.email_newsletter class="w-4 h-4" color="highlight" />
+  <PolarisIcons.email_newsletter backdrop />
   ```
   """
   attr :rest, :global,
@@ -4903,9 +4917,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.embed minor />
-  <Polaris.embed minor class="w-4 h-4" color="highlight" />
-  <Polaris.embed minor backdrop />
+  <PolarisIcons.embed minor />
+  <PolarisIcons.embed minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.embed minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4937,9 +4951,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.enable_selection minor />
-  <Polaris.enable_selection minor class="w-4 h-4" color="highlight" />
-  <Polaris.enable_selection minor backdrop />
+  <PolarisIcons.enable_selection minor />
+  <PolarisIcons.enable_selection minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.enable_selection minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -4971,10 +4985,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.envelope />
-  <Polaris.envelope major />
-  <Polaris.envelope class="w-4 h-4" color="highlight" />
-  <Polaris.envelope backdrop />
+  <PolarisIcons.envelope />
+  <PolarisIcons.envelope major />
+  <PolarisIcons.envelope class="w-4 h-4" color="highlight" />
+  <PolarisIcons.envelope backdrop />
   ```
   """
   attr :rest, :global,
@@ -5006,10 +5020,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.exchange />
-  <Polaris.exchange major />
-  <Polaris.exchange class="w-4 h-4" color="highlight" />
-  <Polaris.exchange backdrop />
+  <PolarisIcons.exchange />
+  <PolarisIcons.exchange major />
+  <PolarisIcons.exchange class="w-4 h-4" color="highlight" />
+  <PolarisIcons.exchange backdrop />
   ```
   """
   attr :rest, :global,
@@ -5041,10 +5055,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.existing_inventory />
-  <Polaris.existing_inventory major />
-  <Polaris.existing_inventory class="w-4 h-4" color="highlight" />
-  <Polaris.existing_inventory backdrop />
+  <PolarisIcons.existing_inventory />
+  <PolarisIcons.existing_inventory major />
+  <PolarisIcons.existing_inventory class="w-4 h-4" color="highlight" />
+  <PolarisIcons.existing_inventory backdrop />
   ```
   """
   attr :rest, :global,
@@ -5076,10 +5090,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.exit />
-  <Polaris.exit major />
-  <Polaris.exit class="w-4 h-4" color="highlight" />
-  <Polaris.exit backdrop />
+  <PolarisIcons.exit />
+  <PolarisIcons.exit major />
+  <PolarisIcons.exit class="w-4 h-4" color="highlight" />
+  <PolarisIcons.exit backdrop />
   ```
   """
   attr :rest, :global,
@@ -5111,9 +5125,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.export minor />
-  <Polaris.export minor class="w-4 h-4" color="highlight" />
-  <Polaris.export minor backdrop />
+  <PolarisIcons.export minor />
+  <PolarisIcons.export minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.export minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5145,9 +5159,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.external minor />
-  <Polaris.external minor class="w-4 h-4" color="highlight" />
-  <Polaris.external minor backdrop />
+  <PolarisIcons.external minor />
+  <PolarisIcons.external minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.external minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5179,9 +5193,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.external_small minor />
-  <Polaris.external_small minor class="w-4 h-4" color="highlight" />
-  <Polaris.external_small minor backdrop />
+  <PolarisIcons.external_small minor />
+  <PolarisIcons.external_small minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.external_small minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5213,9 +5227,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.eye_dropper minor />
-  <Polaris.eye_dropper minor class="w-4 h-4" color="highlight" />
-  <Polaris.eye_dropper minor backdrop />
+  <PolarisIcons.eye_dropper minor />
+  <PolarisIcons.eye_dropper minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.eye_dropper minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5247,10 +5261,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.favicon />
-  <Polaris.favicon major />
-  <Polaris.favicon class="w-4 h-4" color="highlight" />
-  <Polaris.favicon backdrop />
+  <PolarisIcons.favicon />
+  <PolarisIcons.favicon major />
+  <PolarisIcons.favicon class="w-4 h-4" color="highlight" />
+  <PolarisIcons.favicon backdrop />
   ```
   """
   attr :rest, :global,
@@ -5282,10 +5296,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.favorite />
-  <Polaris.favorite major />
-  <Polaris.favorite class="w-4 h-4" color="highlight" />
-  <Polaris.favorite backdrop />
+  <PolarisIcons.favorite />
+  <PolarisIcons.favorite major />
+  <PolarisIcons.favorite class="w-4 h-4" color="highlight" />
+  <PolarisIcons.favorite backdrop />
   ```
   """
   attr :rest, :global,
@@ -5317,10 +5331,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.featured_collection />
-  <Polaris.featured_collection major />
-  <Polaris.featured_collection class="w-4 h-4" color="highlight" />
-  <Polaris.featured_collection backdrop />
+  <PolarisIcons.featured_collection />
+  <PolarisIcons.featured_collection major />
+  <PolarisIcons.featured_collection class="w-4 h-4" color="highlight" />
+  <PolarisIcons.featured_collection backdrop />
   ```
   """
   attr :rest, :global,
@@ -5352,10 +5366,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.featured_content />
-  <Polaris.featured_content major />
-  <Polaris.featured_content class="w-4 h-4" color="highlight" />
-  <Polaris.featured_content backdrop />
+  <PolarisIcons.featured_content />
+  <PolarisIcons.featured_content major />
+  <PolarisIcons.featured_content class="w-4 h-4" color="highlight" />
+  <PolarisIcons.featured_content backdrop />
   ```
   """
   attr :rest, :global,
@@ -5387,10 +5401,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.filter />
-  <Polaris.filter minor />
-  <Polaris.filter class="w-4 h-4" color="highlight" />
-  <Polaris.filter minor backdrop />
+  <PolarisIcons.filter />
+  <PolarisIcons.filter minor />
+  <PolarisIcons.filter class="w-4 h-4" color="highlight" />
+  <PolarisIcons.filter minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5425,10 +5439,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.finances />
-  <Polaris.finances minor />
-  <Polaris.finances class="w-4 h-4" color="highlight" />
-  <Polaris.finances minor backdrop />
+  <PolarisIcons.finances />
+  <PolarisIcons.finances minor />
+  <PolarisIcons.finances class="w-4 h-4" color="highlight" />
+  <PolarisIcons.finances minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5463,10 +5477,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.first_order />
-  <Polaris.first_order major />
-  <Polaris.first_order class="w-4 h-4" color="highlight" />
-  <Polaris.first_order backdrop />
+  <PolarisIcons.first_order />
+  <PolarisIcons.first_order major />
+  <PolarisIcons.first_order class="w-4 h-4" color="highlight" />
+  <PolarisIcons.first_order backdrop />
   ```
   """
   attr :rest, :global,
@@ -5498,10 +5512,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.first_visit />
-  <Polaris.first_visit major />
-  <Polaris.first_visit class="w-4 h-4" color="highlight" />
-  <Polaris.first_visit backdrop />
+  <PolarisIcons.first_visit />
+  <PolarisIcons.first_visit major />
+  <PolarisIcons.first_visit class="w-4 h-4" color="highlight" />
+  <PolarisIcons.first_visit backdrop />
   ```
   """
   attr :rest, :global,
@@ -5533,10 +5547,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.flag />
-  <Polaris.flag major />
-  <Polaris.flag class="w-4 h-4" color="highlight" />
-  <Polaris.flag backdrop />
+  <PolarisIcons.flag />
+  <PolarisIcons.flag major />
+  <PolarisIcons.flag class="w-4 h-4" color="highlight" />
+  <PolarisIcons.flag backdrop />
   ```
   """
   attr :rest, :global,
@@ -5568,10 +5582,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.flip_camera />
-  <Polaris.flip_camera major />
-  <Polaris.flip_camera class="w-4 h-4" color="highlight" />
-  <Polaris.flip_camera backdrop />
+  <PolarisIcons.flip_camera />
+  <PolarisIcons.flip_camera major />
+  <PolarisIcons.flip_camera class="w-4 h-4" color="highlight" />
+  <PolarisIcons.flip_camera backdrop />
   ```
   """
   attr :rest, :global,
@@ -5603,10 +5617,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.folder />
-  <Polaris.folder major />
-  <Polaris.folder class="w-4 h-4" color="highlight" />
-  <Polaris.folder backdrop />
+  <PolarisIcons.folder />
+  <PolarisIcons.folder major />
+  <PolarisIcons.folder class="w-4 h-4" color="highlight" />
+  <PolarisIcons.folder backdrop />
   ```
   """
   attr :rest, :global,
@@ -5638,10 +5652,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.folder_down />
-  <Polaris.folder_down major />
-  <Polaris.folder_down class="w-4 h-4" color="highlight" />
-  <Polaris.folder_down backdrop />
+  <PolarisIcons.folder_down />
+  <PolarisIcons.folder_down major />
+  <PolarisIcons.folder_down class="w-4 h-4" color="highlight" />
+  <PolarisIcons.folder_down backdrop />
   ```
   """
   attr :rest, :global,
@@ -5673,10 +5687,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.folder_minus />
-  <Polaris.folder_minus major />
-  <Polaris.folder_minus class="w-4 h-4" color="highlight" />
-  <Polaris.folder_minus backdrop />
+  <PolarisIcons.folder_minus />
+  <PolarisIcons.folder_minus major />
+  <PolarisIcons.folder_minus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.folder_minus backdrop />
   ```
   """
   attr :rest, :global,
@@ -5708,10 +5722,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.folder_plus />
-  <Polaris.folder_plus major />
-  <Polaris.folder_plus class="w-4 h-4" color="highlight" />
-  <Polaris.folder_plus backdrop />
+  <PolarisIcons.folder_plus />
+  <PolarisIcons.folder_plus major />
+  <PolarisIcons.folder_plus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.folder_plus backdrop />
   ```
   """
   attr :rest, :global,
@@ -5743,10 +5757,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.folder_up />
-  <Polaris.folder_up major />
-  <Polaris.folder_up class="w-4 h-4" color="highlight" />
-  <Polaris.folder_up backdrop />
+  <PolarisIcons.folder_up />
+  <PolarisIcons.folder_up major />
+  <PolarisIcons.folder_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.folder_up backdrop />
   ```
   """
   attr :rest, :global,
@@ -5778,10 +5792,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.follow_up_email />
-  <Polaris.follow_up_email major />
-  <Polaris.follow_up_email class="w-4 h-4" color="highlight" />
-  <Polaris.follow_up_email backdrop />
+  <PolarisIcons.follow_up_email />
+  <PolarisIcons.follow_up_email major />
+  <PolarisIcons.follow_up_email class="w-4 h-4" color="highlight" />
+  <PolarisIcons.follow_up_email backdrop />
   ```
   """
   attr :rest, :global,
@@ -5813,10 +5827,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.food />
-  <Polaris.food major />
-  <Polaris.food class="w-4 h-4" color="highlight" />
-  <Polaris.food backdrop />
+  <PolarisIcons.food />
+  <PolarisIcons.food major />
+  <PolarisIcons.food class="w-4 h-4" color="highlight" />
+  <PolarisIcons.food backdrop />
   ```
   """
   attr :rest, :global,
@@ -5848,10 +5862,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.footer />
-  <Polaris.footer major />
-  <Polaris.footer class="w-4 h-4" color="highlight" />
-  <Polaris.footer backdrop />
+  <PolarisIcons.footer />
+  <PolarisIcons.footer major />
+  <PolarisIcons.footer class="w-4 h-4" color="highlight" />
+  <PolarisIcons.footer backdrop />
   ```
   """
   attr :rest, :global,
@@ -5883,10 +5897,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.forms />
-  <Polaris.forms major />
-  <Polaris.forms class="w-4 h-4" color="highlight" />
-  <Polaris.forms backdrop />
+  <PolarisIcons.forms />
+  <PolarisIcons.forms major />
+  <PolarisIcons.forms class="w-4 h-4" color="highlight" />
+  <PolarisIcons.forms backdrop />
   ```
   """
   attr :rest, :global,
@@ -5918,10 +5932,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.fraud_protect />
-  <Polaris.fraud_protect minor />
-  <Polaris.fraud_protect class="w-4 h-4" color="highlight" />
-  <Polaris.fraud_protect minor backdrop />
+  <PolarisIcons.fraud_protect />
+  <PolarisIcons.fraud_protect minor />
+  <PolarisIcons.fraud_protect class="w-4 h-4" color="highlight" />
+  <PolarisIcons.fraud_protect minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5956,10 +5970,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.fraud_protect_pending />
-  <Polaris.fraud_protect_pending minor />
-  <Polaris.fraud_protect_pending class="w-4 h-4" color="highlight" />
-  <Polaris.fraud_protect_pending minor backdrop />
+  <PolarisIcons.fraud_protect_pending />
+  <PolarisIcons.fraud_protect_pending minor />
+  <PolarisIcons.fraud_protect_pending class="w-4 h-4" color="highlight" />
+  <PolarisIcons.fraud_protect_pending minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -5994,10 +6008,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.fraud_protect_unprotected />
-  <Polaris.fraud_protect_unprotected minor />
-  <Polaris.fraud_protect_unprotected class="w-4 h-4" color="highlight" />
-  <Polaris.fraud_protect_unprotected minor backdrop />
+  <PolarisIcons.fraud_protect_unprotected />
+  <PolarisIcons.fraud_protect_unprotected minor />
+  <PolarisIcons.fraud_protect_unprotected class="w-4 h-4" color="highlight" />
+  <PolarisIcons.fraud_protect_unprotected minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6032,10 +6046,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.fulfillment_fulfilled />
-  <Polaris.fulfillment_fulfilled major />
-  <Polaris.fulfillment_fulfilled class="w-4 h-4" color="highlight" />
-  <Polaris.fulfillment_fulfilled backdrop />
+  <PolarisIcons.fulfillment_fulfilled />
+  <PolarisIcons.fulfillment_fulfilled major />
+  <PolarisIcons.fulfillment_fulfilled class="w-4 h-4" color="highlight" />
+  <PolarisIcons.fulfillment_fulfilled backdrop />
   ```
   """
   attr :rest, :global,
@@ -6067,10 +6081,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.fulfillment_on_hold />
-  <Polaris.fulfillment_on_hold major />
-  <Polaris.fulfillment_on_hold class="w-4 h-4" color="highlight" />
-  <Polaris.fulfillment_on_hold backdrop />
+  <PolarisIcons.fulfillment_on_hold />
+  <PolarisIcons.fulfillment_on_hold major />
+  <PolarisIcons.fulfillment_on_hold class="w-4 h-4" color="highlight" />
+  <PolarisIcons.fulfillment_on_hold backdrop />
   ```
   """
   attr :rest, :global,
@@ -6102,10 +6116,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.games_console />
-  <Polaris.games_console major />
-  <Polaris.games_console class="w-4 h-4" color="highlight" />
-  <Polaris.games_console backdrop />
+  <PolarisIcons.games_console />
+  <PolarisIcons.games_console major />
+  <PolarisIcons.games_console class="w-4 h-4" color="highlight" />
+  <PolarisIcons.games_console backdrop />
   ```
   """
   attr :rest, :global,
@@ -6137,10 +6151,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.gift_card />
-  <Polaris.gift_card minor />
-  <Polaris.gift_card class="w-4 h-4" color="highlight" />
-  <Polaris.gift_card minor backdrop />
+  <PolarisIcons.gift_card />
+  <PolarisIcons.gift_card minor />
+  <PolarisIcons.gift_card class="w-4 h-4" color="highlight" />
+  <PolarisIcons.gift_card minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6175,10 +6189,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.globe />
-  <Polaris.globe minor />
-  <Polaris.globe class="w-4 h-4" color="highlight" />
-  <Polaris.globe minor backdrop />
+  <PolarisIcons.globe />
+  <PolarisIcons.globe minor />
+  <PolarisIcons.globe class="w-4 h-4" color="highlight" />
+  <PolarisIcons.globe minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6213,10 +6227,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.grammar />
-  <Polaris.grammar major />
-  <Polaris.grammar class="w-4 h-4" color="highlight" />
-  <Polaris.grammar backdrop />
+  <PolarisIcons.grammar />
+  <PolarisIcons.grammar major />
+  <PolarisIcons.grammar class="w-4 h-4" color="highlight" />
+  <PolarisIcons.grammar backdrop />
   ```
   """
   attr :rest, :global,
@@ -6248,10 +6262,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.hashtag />
-  <Polaris.hashtag minor />
-  <Polaris.hashtag class="w-4 h-4" color="highlight" />
-  <Polaris.hashtag minor backdrop />
+  <PolarisIcons.hashtag />
+  <PolarisIcons.hashtag minor />
+  <PolarisIcons.hashtag class="w-4 h-4" color="highlight" />
+  <PolarisIcons.hashtag minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6286,10 +6300,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.header />
-  <Polaris.header major />
-  <Polaris.header class="w-4 h-4" color="highlight" />
-  <Polaris.header backdrop />
+  <PolarisIcons.header />
+  <PolarisIcons.header major />
+  <PolarisIcons.header class="w-4 h-4" color="highlight" />
+  <PolarisIcons.header backdrop />
   ```
   """
   attr :rest, :global,
@@ -6321,10 +6335,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.heart />
-  <Polaris.heart major />
-  <Polaris.heart class="w-4 h-4" color="highlight" />
-  <Polaris.heart backdrop />
+  <PolarisIcons.heart />
+  <PolarisIcons.heart major />
+  <PolarisIcons.heart class="w-4 h-4" color="highlight" />
+  <PolarisIcons.heart backdrop />
   ```
   """
   attr :rest, :global,
@@ -6356,9 +6370,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.hide minor />
-  <Polaris.hide minor class="w-4 h-4" color="highlight" />
-  <Polaris.hide minor backdrop />
+  <PolarisIcons.hide minor />
+  <PolarisIcons.hide minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.hide minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6390,10 +6404,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.hide_keyboard />
-  <Polaris.hide_keyboard major />
-  <Polaris.hide_keyboard class="w-4 h-4" color="highlight" />
-  <Polaris.hide_keyboard backdrop />
+  <PolarisIcons.hide_keyboard />
+  <PolarisIcons.hide_keyboard major />
+  <PolarisIcons.hide_keyboard class="w-4 h-4" color="highlight" />
+  <PolarisIcons.hide_keyboard backdrop />
   ```
   """
   attr :rest, :global,
@@ -6425,10 +6439,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.hint />
-  <Polaris.hint major />
-  <Polaris.hint class="w-4 h-4" color="highlight" />
-  <Polaris.hint backdrop />
+  <PolarisIcons.hint />
+  <PolarisIcons.hint major />
+  <PolarisIcons.hint class="w-4 h-4" color="highlight" />
+  <PolarisIcons.hint backdrop />
   ```
   """
   attr :rest, :global,
@@ -6460,10 +6474,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.home />
-  <Polaris.home minor />
-  <Polaris.home class="w-4 h-4" color="highlight" />
-  <Polaris.home minor backdrop />
+  <PolarisIcons.home />
+  <PolarisIcons.home minor />
+  <PolarisIcons.home class="w-4 h-4" color="highlight" />
+  <PolarisIcons.home minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6498,9 +6512,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.horizontal_dots minor />
-  <Polaris.horizontal_dots minor class="w-4 h-4" color="highlight" />
-  <Polaris.horizontal_dots minor backdrop />
+  <PolarisIcons.horizontal_dots minor />
+  <PolarisIcons.horizontal_dots minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.horizontal_dots minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6532,10 +6546,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.icons />
-  <Polaris.icons major />
-  <Polaris.icons class="w-4 h-4" color="highlight" />
-  <Polaris.icons backdrop />
+  <PolarisIcons.icons />
+  <PolarisIcons.icons major />
+  <PolarisIcons.icons class="w-4 h-4" color="highlight" />
+  <PolarisIcons.icons backdrop />
   ```
   """
   attr :rest, :global,
@@ -6567,10 +6581,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.identity_card />
-  <Polaris.identity_card major />
-  <Polaris.identity_card class="w-4 h-4" color="highlight" />
-  <Polaris.identity_card backdrop />
+  <PolarisIcons.identity_card />
+  <PolarisIcons.identity_card major />
+  <PolarisIcons.identity_card class="w-4 h-4" color="highlight" />
+  <PolarisIcons.identity_card backdrop />
   ```
   """
   attr :rest, :global,
@@ -6602,10 +6616,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.illustration />
-  <Polaris.illustration major />
-  <Polaris.illustration class="w-4 h-4" color="highlight" />
-  <Polaris.illustration backdrop />
+  <PolarisIcons.illustration />
+  <PolarisIcons.illustration major />
+  <PolarisIcons.illustration class="w-4 h-4" color="highlight" />
+  <PolarisIcons.illustration backdrop />
   ```
   """
   attr :rest, :global,
@@ -6637,10 +6651,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.image />
-  <Polaris.image major />
-  <Polaris.image class="w-4 h-4" color="highlight" />
-  <Polaris.image backdrop />
+  <PolarisIcons.image />
+  <PolarisIcons.image major />
+  <PolarisIcons.image class="w-4 h-4" color="highlight" />
+  <PolarisIcons.image backdrop />
   ```
   """
   attr :rest, :global,
@@ -6672,10 +6686,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.image_alt />
-  <Polaris.image_alt minor />
-  <Polaris.image_alt class="w-4 h-4" color="highlight" />
-  <Polaris.image_alt minor backdrop />
+  <PolarisIcons.image_alt />
+  <PolarisIcons.image_alt minor />
+  <PolarisIcons.image_alt class="w-4 h-4" color="highlight" />
+  <PolarisIcons.image_alt minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6710,10 +6724,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.image_with_text />
-  <Polaris.image_with_text major />
-  <Polaris.image_with_text class="w-4 h-4" color="highlight" />
-  <Polaris.image_with_text backdrop />
+  <PolarisIcons.image_with_text />
+  <PolarisIcons.image_with_text major />
+  <PolarisIcons.image_with_text class="w-4 h-4" color="highlight" />
+  <PolarisIcons.image_with_text backdrop />
   ```
   """
   attr :rest, :global,
@@ -6745,10 +6759,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.image_with_text_overlay />
-  <Polaris.image_with_text_overlay major />
-  <Polaris.image_with_text_overlay class="w-4 h-4" color="highlight" />
-  <Polaris.image_with_text_overlay backdrop />
+  <PolarisIcons.image_with_text_overlay />
+  <PolarisIcons.image_with_text_overlay major />
+  <PolarisIcons.image_with_text_overlay class="w-4 h-4" color="highlight" />
+  <PolarisIcons.image_with_text_overlay backdrop />
   ```
   """
   attr :rest, :global,
@@ -6780,10 +6794,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.images />
-  <Polaris.images major />
-  <Polaris.images class="w-4 h-4" color="highlight" />
-  <Polaris.images backdrop />
+  <PolarisIcons.images />
+  <PolarisIcons.images major />
+  <PolarisIcons.images class="w-4 h-4" color="highlight" />
+  <PolarisIcons.images backdrop />
   ```
   """
   attr :rest, :global,
@@ -6815,9 +6829,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.import minor />
-  <Polaris.import minor class="w-4 h-4" color="highlight" />
-  <Polaris.import minor backdrop />
+  <PolarisIcons.import minor />
+  <PolarisIcons.import minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.import minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6849,10 +6863,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.import_store />
-  <Polaris.import_store major />
-  <Polaris.import_store class="w-4 h-4" color="highlight" />
-  <Polaris.import_store backdrop />
+  <PolarisIcons.import_store />
+  <PolarisIcons.import_store major />
+  <PolarisIcons.import_store class="w-4 h-4" color="highlight" />
+  <PolarisIcons.import_store backdrop />
   ```
   """
   attr :rest, :global,
@@ -6884,10 +6898,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.inactive_location />
-  <Polaris.inactive_location minor />
-  <Polaris.inactive_location class="w-4 h-4" color="highlight" />
-  <Polaris.inactive_location minor backdrop />
+  <PolarisIcons.inactive_location />
+  <PolarisIcons.inactive_location minor />
+  <PolarisIcons.inactive_location class="w-4 h-4" color="highlight" />
+  <PolarisIcons.inactive_location minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6924,10 +6938,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.incoming />
-  <Polaris.incoming major />
-  <Polaris.incoming class="w-4 h-4" color="highlight" />
-  <Polaris.incoming backdrop />
+  <PolarisIcons.incoming />
+  <PolarisIcons.incoming major />
+  <PolarisIcons.incoming class="w-4 h-4" color="highlight" />
+  <PolarisIcons.incoming backdrop />
   ```
   """
   attr :rest, :global,
@@ -6959,9 +6973,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.info minor />
-  <Polaris.info minor class="w-4 h-4" color="highlight" />
-  <Polaris.info minor backdrop />
+  <PolarisIcons.info minor />
+  <PolarisIcons.info minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.info minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -6993,10 +7007,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.insert_dynamic_source />
-  <Polaris.insert_dynamic_source minor />
-  <Polaris.insert_dynamic_source class="w-4 h-4" color="highlight" />
-  <Polaris.insert_dynamic_source minor backdrop />
+  <PolarisIcons.insert_dynamic_source />
+  <PolarisIcons.insert_dynamic_source minor />
+  <PolarisIcons.insert_dynamic_source class="w-4 h-4" color="highlight" />
+  <PolarisIcons.insert_dynamic_source minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7031,9 +7045,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.install minor />
-  <Polaris.install minor class="w-4 h-4" color="highlight" />
-  <Polaris.install minor backdrop />
+  <PolarisIcons.install minor />
+  <PolarisIcons.install minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.install minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7065,10 +7079,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.inventory />
-  <Polaris.inventory major />
-  <Polaris.inventory class="w-4 h-4" color="highlight" />
-  <Polaris.inventory backdrop />
+  <PolarisIcons.inventory />
+  <PolarisIcons.inventory major />
+  <PolarisIcons.inventory class="w-4 h-4" color="highlight" />
+  <PolarisIcons.inventory backdrop />
   ```
   """
   attr :rest, :global,
@@ -7100,9 +7114,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.invite minor />
-  <Polaris.invite minor class="w-4 h-4" color="highlight" />
-  <Polaris.invite minor backdrop />
+  <PolarisIcons.invite minor />
+  <PolarisIcons.invite minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.invite minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7134,10 +7148,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.iq />
-  <Polaris.iq major />
-  <Polaris.iq class="w-4 h-4" color="highlight" />
-  <Polaris.iq backdrop />
+  <PolarisIcons.iq />
+  <PolarisIcons.iq major />
+  <PolarisIcons.iq class="w-4 h-4" color="highlight" />
+  <PolarisIcons.iq backdrop />
   ```
   """
   attr :rest, :global,
@@ -7169,10 +7183,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.jobs />
-  <Polaris.jobs major />
-  <Polaris.jobs class="w-4 h-4" color="highlight" />
-  <Polaris.jobs backdrop />
+  <PolarisIcons.jobs />
+  <PolarisIcons.jobs major />
+  <PolarisIcons.jobs class="w-4 h-4" color="highlight" />
+  <PolarisIcons.jobs backdrop />
   ```
   """
   attr :rest, :global,
@@ -7204,10 +7218,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.key />
-  <Polaris.key major />
-  <Polaris.key class="w-4 h-4" color="highlight" />
-  <Polaris.key backdrop />
+  <PolarisIcons.key />
+  <PolarisIcons.key major />
+  <PolarisIcons.key class="w-4 h-4" color="highlight" />
+  <PolarisIcons.key backdrop />
   ```
   """
   attr :rest, :global,
@@ -7239,10 +7253,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.label_printer />
-  <Polaris.label_printer major />
-  <Polaris.label_printer class="w-4 h-4" color="highlight" />
-  <Polaris.label_printer backdrop />
+  <PolarisIcons.label_printer />
+  <PolarisIcons.label_printer major />
+  <PolarisIcons.label_printer class="w-4 h-4" color="highlight" />
+  <PolarisIcons.label_printer backdrop />
   ```
   """
   attr :rest, :global,
@@ -7274,10 +7288,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.landing_page />
-  <Polaris.landing_page major />
-  <Polaris.landing_page class="w-4 h-4" color="highlight" />
-  <Polaris.landing_page backdrop />
+  <PolarisIcons.landing_page />
+  <PolarisIcons.landing_page major />
+  <PolarisIcons.landing_page class="w-4 h-4" color="highlight" />
+  <PolarisIcons.landing_page backdrop />
   ```
   """
   attr :rest, :global,
@@ -7309,9 +7323,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.language minor />
-  <Polaris.language minor class="w-4 h-4" color="highlight" />
-  <Polaris.language minor backdrop />
+  <PolarisIcons.language minor />
+  <PolarisIcons.language minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.language minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7343,10 +7357,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.legal />
-  <Polaris.legal major />
-  <Polaris.legal class="w-4 h-4" color="highlight" />
-  <Polaris.legal backdrop />
+  <PolarisIcons.legal />
+  <PolarisIcons.legal major />
+  <PolarisIcons.legal class="w-4 h-4" color="highlight" />
+  <PolarisIcons.legal backdrop />
   ```
   """
   attr :rest, :global,
@@ -7378,9 +7392,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.link minor />
-  <Polaris.link minor class="w-4 h-4" color="highlight" />
-  <Polaris.link minor backdrop />
+  <PolarisIcons.link minor />
+  <PolarisIcons.link minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.link minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7412,10 +7426,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.list />
-  <Polaris.list major />
-  <Polaris.list class="w-4 h-4" color="highlight" />
-  <Polaris.list backdrop />
+  <PolarisIcons.list />
+  <PolarisIcons.list major />
+  <PolarisIcons.list class="w-4 h-4" color="highlight" />
+  <PolarisIcons.list backdrop />
   ```
   """
   attr :rest, :global,
@@ -7447,10 +7461,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.live_view />
-  <Polaris.live_view major />
-  <Polaris.live_view class="w-4 h-4" color="highlight" />
-  <Polaris.live_view backdrop />
+  <PolarisIcons.live_view />
+  <PolarisIcons.live_view major />
+  <PolarisIcons.live_view class="w-4 h-4" color="highlight" />
+  <PolarisIcons.live_view backdrop />
   ```
   """
   attr :rest, :global,
@@ -7482,10 +7496,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.location />
-  <Polaris.location major />
-  <Polaris.location class="w-4 h-4" color="highlight" />
-  <Polaris.location backdrop />
+  <PolarisIcons.location />
+  <PolarisIcons.location major />
+  <PolarisIcons.location class="w-4 h-4" color="highlight" />
+  <PolarisIcons.location backdrop />
   ```
   """
   attr :rest, :global,
@@ -7517,9 +7531,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.locations minor />
-  <Polaris.locations minor class="w-4 h-4" color="highlight" />
-  <Polaris.locations minor backdrop />
+  <PolarisIcons.locations minor />
+  <PolarisIcons.locations minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.locations minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7551,10 +7565,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.lock />
-  <Polaris.lock minor />
-  <Polaris.lock class="w-4 h-4" color="highlight" />
-  <Polaris.lock minor backdrop />
+  <PolarisIcons.lock />
+  <PolarisIcons.lock minor />
+  <PolarisIcons.lock class="w-4 h-4" color="highlight" />
+  <PolarisIcons.lock minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7589,9 +7603,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.log_out minor />
-  <Polaris.log_out minor class="w-4 h-4" color="highlight" />
-  <Polaris.log_out minor backdrop />
+  <PolarisIcons.log_out minor />
+  <PolarisIcons.log_out minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.log_out minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7623,10 +7637,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.logo_block />
-  <Polaris.logo_block major />
-  <Polaris.logo_block class="w-4 h-4" color="highlight" />
-  <Polaris.logo_block backdrop />
+  <PolarisIcons.logo_block />
+  <PolarisIcons.logo_block major />
+  <PolarisIcons.logo_block class="w-4 h-4" color="highlight" />
+  <PolarisIcons.logo_block backdrop />
   ```
   """
   attr :rest, :global,
@@ -7658,10 +7672,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.managed_store />
-  <Polaris.managed_store major />
-  <Polaris.managed_store class="w-4 h-4" color="highlight" />
-  <Polaris.managed_store backdrop />
+  <PolarisIcons.managed_store />
+  <PolarisIcons.managed_store major />
+  <PolarisIcons.managed_store class="w-4 h-4" color="highlight" />
+  <PolarisIcons.managed_store backdrop />
   ```
   """
   attr :rest, :global,
@@ -7693,9 +7707,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mark_fulfilled minor />
-  <Polaris.mark_fulfilled minor class="w-4 h-4" color="highlight" />
-  <Polaris.mark_fulfilled minor backdrop />
+  <PolarisIcons.mark_fulfilled minor />
+  <PolarisIcons.mark_fulfilled minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mark_fulfilled minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7727,9 +7741,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mark_paid minor />
-  <Polaris.mark_paid minor class="w-4 h-4" color="highlight" />
-  <Polaris.mark_paid minor backdrop />
+  <PolarisIcons.mark_paid minor />
+  <PolarisIcons.mark_paid minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mark_paid minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7761,10 +7775,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.marketing />
-  <Polaris.marketing minor />
-  <Polaris.marketing class="w-4 h-4" color="highlight" />
-  <Polaris.marketing minor backdrop />
+  <PolarisIcons.marketing />
+  <PolarisIcons.marketing minor />
+  <PolarisIcons.marketing class="w-4 h-4" color="highlight" />
+  <PolarisIcons.marketing minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7799,10 +7813,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.markets />
-  <Polaris.markets major />
-  <Polaris.markets class="w-4 h-4" color="highlight" />
-  <Polaris.markets backdrop />
+  <PolarisIcons.markets />
+  <PolarisIcons.markets major />
+  <PolarisIcons.markets class="w-4 h-4" color="highlight" />
+  <PolarisIcons.markets backdrop />
   ```
   """
   attr :rest, :global,
@@ -7834,10 +7848,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.maximize />
-  <Polaris.maximize minor />
-  <Polaris.maximize class="w-4 h-4" color="highlight" />
-  <Polaris.maximize minor backdrop />
+  <PolarisIcons.maximize />
+  <PolarisIcons.maximize minor />
+  <PolarisIcons.maximize class="w-4 h-4" color="highlight" />
+  <PolarisIcons.maximize minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7872,9 +7886,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.measurement minor />
-  <Polaris.measurement minor class="w-4 h-4" color="highlight" />
-  <Polaris.measurement minor backdrop />
+  <PolarisIcons.measurement minor />
+  <PolarisIcons.measurement minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.measurement minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7906,10 +7920,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mention />
-  <Polaris.mention major />
-  <Polaris.mention class="w-4 h-4" color="highlight" />
-  <Polaris.mention backdrop />
+  <PolarisIcons.mention />
+  <PolarisIcons.mention major />
+  <PolarisIcons.mention class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mention backdrop />
   ```
   """
   attr :rest, :global,
@@ -7941,9 +7955,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.merge minor />
-  <Polaris.merge minor class="w-4 h-4" color="highlight" />
-  <Polaris.merge minor backdrop />
+  <PolarisIcons.merge minor />
+  <PolarisIcons.merge minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.merge minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -7975,10 +7989,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.metafields />
-  <Polaris.metafields minor />
-  <Polaris.metafields class="w-4 h-4" color="highlight" />
-  <Polaris.metafields minor backdrop />
+  <PolarisIcons.metafields />
+  <PolarisIcons.metafields minor />
+  <PolarisIcons.metafields class="w-4 h-4" color="highlight" />
+  <PolarisIcons.metafields minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8013,10 +8027,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.microphone />
-  <Polaris.microphone major />
-  <Polaris.microphone class="w-4 h-4" color="highlight" />
-  <Polaris.microphone backdrop />
+  <PolarisIcons.microphone />
+  <PolarisIcons.microphone major />
+  <PolarisIcons.microphone class="w-4 h-4" color="highlight" />
+  <PolarisIcons.microphone backdrop />
   ```
   """
   attr :rest, :global,
@@ -8048,10 +8062,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.minimize />
-  <Polaris.minimize minor />
-  <Polaris.minimize class="w-4 h-4" color="highlight" />
-  <Polaris.minimize minor backdrop />
+  <PolarisIcons.minimize />
+  <PolarisIcons.minimize minor />
+  <PolarisIcons.minimize class="w-4 h-4" color="highlight" />
+  <PolarisIcons.minimize minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8086,9 +8100,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.minus minor />
-  <Polaris.minus minor class="w-4 h-4" color="highlight" />
-  <Polaris.minus minor backdrop />
+  <PolarisIcons.minus minor />
+  <PolarisIcons.minus minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.minus minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8120,10 +8134,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile />
-  <Polaris.mobile major />
-  <Polaris.mobile class="w-4 h-4" color="highlight" />
-  <Polaris.mobile backdrop />
+  <PolarisIcons.mobile />
+  <PolarisIcons.mobile major />
+  <PolarisIcons.mobile class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile backdrop />
   ```
   """
   attr :rest, :global,
@@ -8155,10 +8169,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_accept />
-  <Polaris.mobile_accept major />
-  <Polaris.mobile_accept class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_accept backdrop />
+  <PolarisIcons.mobile_accept />
+  <PolarisIcons.mobile_accept major />
+  <PolarisIcons.mobile_accept class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_accept backdrop />
   ```
   """
   attr :rest, :global,
@@ -8190,10 +8204,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_back_arrow />
-  <Polaris.mobile_back_arrow major />
-  <Polaris.mobile_back_arrow class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_back_arrow backdrop />
+  <PolarisIcons.mobile_back_arrow />
+  <PolarisIcons.mobile_back_arrow major />
+  <PolarisIcons.mobile_back_arrow class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_back_arrow backdrop />
   ```
   """
   attr :rest, :global,
@@ -8225,10 +8239,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_cancel />
-  <Polaris.mobile_cancel major />
-  <Polaris.mobile_cancel class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_cancel backdrop />
+  <PolarisIcons.mobile_cancel />
+  <PolarisIcons.mobile_cancel major />
+  <PolarisIcons.mobile_cancel class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_cancel backdrop />
   ```
   """
   attr :rest, :global,
@@ -8260,10 +8274,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_chevron />
-  <Polaris.mobile_chevron major />
-  <Polaris.mobile_chevron class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_chevron backdrop />
+  <PolarisIcons.mobile_chevron />
+  <PolarisIcons.mobile_chevron major />
+  <PolarisIcons.mobile_chevron class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_chevron backdrop />
   ```
   """
   attr :rest, :global,
@@ -8295,10 +8309,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_hamburger />
-  <Polaris.mobile_hamburger major />
-  <Polaris.mobile_hamburger class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_hamburger backdrop />
+  <PolarisIcons.mobile_hamburger />
+  <PolarisIcons.mobile_hamburger major />
+  <PolarisIcons.mobile_hamburger class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_hamburger backdrop />
   ```
   """
   attr :rest, :global,
@@ -8330,10 +8344,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_horizontal_dots />
-  <Polaris.mobile_horizontal_dots major />
-  <Polaris.mobile_horizontal_dots class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_horizontal_dots backdrop />
+  <PolarisIcons.mobile_horizontal_dots />
+  <PolarisIcons.mobile_horizontal_dots major />
+  <PolarisIcons.mobile_horizontal_dots class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_horizontal_dots backdrop />
   ```
   """
   attr :rest, :global,
@@ -8365,10 +8379,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_plus />
-  <Polaris.mobile_plus major />
-  <Polaris.mobile_plus class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_plus backdrop />
+  <PolarisIcons.mobile_plus />
+  <PolarisIcons.mobile_plus major />
+  <PolarisIcons.mobile_plus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_plus backdrop />
   ```
   """
   attr :rest, :global,
@@ -8400,10 +8414,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.mobile_vertical_dots />
-  <Polaris.mobile_vertical_dots major />
-  <Polaris.mobile_vertical_dots class="w-4 h-4" color="highlight" />
-  <Polaris.mobile_vertical_dots backdrop />
+  <PolarisIcons.mobile_vertical_dots />
+  <PolarisIcons.mobile_vertical_dots major />
+  <PolarisIcons.mobile_vertical_dots class="w-4 h-4" color="highlight" />
+  <PolarisIcons.mobile_vertical_dots backdrop />
   ```
   """
   attr :rest, :global,
@@ -8435,10 +8449,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.moneris />
-  <Polaris.moneris major />
-  <Polaris.moneris class="w-4 h-4" color="highlight" />
-  <Polaris.moneris backdrop />
+  <PolarisIcons.moneris />
+  <PolarisIcons.moneris major />
+  <PolarisIcons.moneris class="w-4 h-4" color="highlight" />
+  <PolarisIcons.moneris backdrop />
   ```
   """
   attr :rest, :global,
@@ -8470,9 +8484,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.money minor />
-  <Polaris.money minor class="w-4 h-4" color="highlight" />
-  <Polaris.money minor backdrop />
+  <PolarisIcons.money minor />
+  <PolarisIcons.money minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.money minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8504,10 +8518,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.nature />
-  <Polaris.nature major />
-  <Polaris.nature class="w-4 h-4" color="highlight" />
-  <Polaris.nature backdrop />
+  <PolarisIcons.nature />
+  <PolarisIcons.nature major />
+  <PolarisIcons.nature class="w-4 h-4" color="highlight" />
+  <PolarisIcons.nature backdrop />
   ```
   """
   attr :rest, :global,
@@ -8539,10 +8553,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.navigation />
-  <Polaris.navigation major />
-  <Polaris.navigation class="w-4 h-4" color="highlight" />
-  <Polaris.navigation backdrop />
+  <PolarisIcons.navigation />
+  <PolarisIcons.navigation major />
+  <PolarisIcons.navigation class="w-4 h-4" color="highlight" />
+  <PolarisIcons.navigation backdrop />
   ```
   """
   attr :rest, :global,
@@ -8574,10 +8588,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.note />
-  <Polaris.note minor />
-  <Polaris.note class="w-4 h-4" color="highlight" />
-  <Polaris.note minor backdrop />
+  <PolarisIcons.note />
+  <PolarisIcons.note minor />
+  <PolarisIcons.note class="w-4 h-4" color="highlight" />
+  <PolarisIcons.note minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8612,10 +8626,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.notification />
-  <Polaris.notification major />
-  <Polaris.notification class="w-4 h-4" color="highlight" />
-  <Polaris.notification backdrop />
+  <PolarisIcons.notification />
+  <PolarisIcons.notification major />
+  <PolarisIcons.notification class="w-4 h-4" color="highlight" />
+  <PolarisIcons.notification backdrop />
   ```
   """
   attr :rest, :global,
@@ -8647,10 +8661,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.online_store />
-  <Polaris.online_store minor />
-  <Polaris.online_store class="w-4 h-4" color="highlight" />
-  <Polaris.online_store minor backdrop />
+  <PolarisIcons.online_store />
+  <PolarisIcons.online_store minor />
+  <PolarisIcons.online_store class="w-4 h-4" color="highlight" />
+  <PolarisIcons.online_store minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8685,9 +8699,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.order_status minor />
-  <Polaris.order_status minor class="w-4 h-4" color="highlight" />
-  <Polaris.order_status minor backdrop />
+  <PolarisIcons.order_status minor />
+  <PolarisIcons.order_status minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.order_status minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8719,10 +8733,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.orders />
-  <Polaris.orders minor />
-  <Polaris.orders class="w-4 h-4" color="highlight" />
-  <Polaris.orders minor backdrop />
+  <PolarisIcons.orders />
+  <PolarisIcons.orders minor />
+  <PolarisIcons.orders class="w-4 h-4" color="highlight" />
+  <PolarisIcons.orders minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -8757,10 +8771,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.organization />
-  <Polaris.organization major />
-  <Polaris.organization class="w-4 h-4" color="highlight" />
-  <Polaris.organization backdrop />
+  <PolarisIcons.organization />
+  <PolarisIcons.organization major />
+  <PolarisIcons.organization class="w-4 h-4" color="highlight" />
+  <PolarisIcons.organization backdrop />
   ```
   """
   attr :rest, :global,
@@ -8792,10 +8806,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.outgoing />
-  <Polaris.outgoing major />
-  <Polaris.outgoing class="w-4 h-4" color="highlight" />
-  <Polaris.outgoing backdrop />
+  <PolarisIcons.outgoing />
+  <PolarisIcons.outgoing major />
+  <PolarisIcons.outgoing class="w-4 h-4" color="highlight" />
+  <PolarisIcons.outgoing backdrop />
   ```
   """
   attr :rest, :global,
@@ -8827,10 +8841,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.package />
-  <Polaris.package major />
-  <Polaris.package class="w-4 h-4" color="highlight" />
-  <Polaris.package backdrop />
+  <PolarisIcons.package />
+  <PolarisIcons.package major />
+  <PolarisIcons.package class="w-4 h-4" color="highlight" />
+  <PolarisIcons.package backdrop />
   ```
   """
   attr :rest, :global,
@@ -8862,10 +8876,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.page />
-  <Polaris.page major />
-  <Polaris.page class="w-4 h-4" color="highlight" />
-  <Polaris.page backdrop />
+  <PolarisIcons.page />
+  <PolarisIcons.page major />
+  <PolarisIcons.page class="w-4 h-4" color="highlight" />
+  <PolarisIcons.page backdrop />
   ```
   """
   attr :rest, :global,
@@ -8897,10 +8911,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.page_down />
-  <Polaris.page_down major />
-  <Polaris.page_down class="w-4 h-4" color="highlight" />
-  <Polaris.page_down backdrop />
+  <PolarisIcons.page_down />
+  <PolarisIcons.page_down major />
+  <PolarisIcons.page_down class="w-4 h-4" color="highlight" />
+  <PolarisIcons.page_down backdrop />
   ```
   """
   attr :rest, :global,
@@ -8932,10 +8946,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.page_minus />
-  <Polaris.page_minus major />
-  <Polaris.page_minus class="w-4 h-4" color="highlight" />
-  <Polaris.page_minus backdrop />
+  <PolarisIcons.page_minus />
+  <PolarisIcons.page_minus major />
+  <PolarisIcons.page_minus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.page_minus backdrop />
   ```
   """
   attr :rest, :global,
@@ -8967,10 +8981,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.page_plus />
-  <Polaris.page_plus major />
-  <Polaris.page_plus class="w-4 h-4" color="highlight" />
-  <Polaris.page_plus backdrop />
+  <PolarisIcons.page_plus />
+  <PolarisIcons.page_plus major />
+  <PolarisIcons.page_plus class="w-4 h-4" color="highlight" />
+  <PolarisIcons.page_plus backdrop />
   ```
   """
   attr :rest, :global,
@@ -9002,10 +9016,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.page_up />
-  <Polaris.page_up major />
-  <Polaris.page_up class="w-4 h-4" color="highlight" />
-  <Polaris.page_up backdrop />
+  <PolarisIcons.page_up />
+  <PolarisIcons.page_up major />
+  <PolarisIcons.page_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.page_up backdrop />
   ```
   """
   attr :rest, :global,
@@ -9037,9 +9051,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.pagination_end minor />
-  <Polaris.pagination_end minor class="w-4 h-4" color="highlight" />
-  <Polaris.pagination_end minor backdrop />
+  <PolarisIcons.pagination_end minor />
+  <PolarisIcons.pagination_end minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.pagination_end minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9071,9 +9085,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.pagination_start minor />
-  <Polaris.pagination_start minor class="w-4 h-4" color="highlight" />
-  <Polaris.pagination_start minor backdrop />
+  <PolarisIcons.pagination_start minor />
+  <PolarisIcons.pagination_start minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.pagination_start minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9105,10 +9119,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.paint_brush />
-  <Polaris.paint_brush major />
-  <Polaris.paint_brush class="w-4 h-4" color="highlight" />
-  <Polaris.paint_brush backdrop />
+  <PolarisIcons.paint_brush />
+  <PolarisIcons.paint_brush major />
+  <PolarisIcons.paint_brush class="w-4 h-4" color="highlight" />
+  <PolarisIcons.paint_brush backdrop />
   ```
   """
   attr :rest, :global,
@@ -9140,10 +9154,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.pause />
-  <Polaris.pause minor />
-  <Polaris.pause class="w-4 h-4" color="highlight" />
-  <Polaris.pause minor backdrop />
+  <PolarisIcons.pause />
+  <PolarisIcons.pause minor />
+  <PolarisIcons.pause class="w-4 h-4" color="highlight" />
+  <PolarisIcons.pause minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9178,10 +9192,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.pause_circle />
-  <Polaris.pause_circle major />
-  <Polaris.pause_circle class="w-4 h-4" color="highlight" />
-  <Polaris.pause_circle backdrop />
+  <PolarisIcons.pause_circle />
+  <PolarisIcons.pause_circle major />
+  <PolarisIcons.pause_circle class="w-4 h-4" color="highlight" />
+  <PolarisIcons.pause_circle backdrop />
   ```
   """
   attr :rest, :global,
@@ -9213,10 +9227,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.payments />
-  <Polaris.payments major />
-  <Polaris.payments class="w-4 h-4" color="highlight" />
-  <Polaris.payments backdrop />
+  <PolarisIcons.payments />
+  <PolarisIcons.payments major />
+  <PolarisIcons.payments class="w-4 h-4" color="highlight" />
+  <PolarisIcons.payments backdrop />
   ```
   """
   attr :rest, :global,
@@ -9248,10 +9262,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.phone />
-  <Polaris.phone major />
-  <Polaris.phone class="w-4 h-4" color="highlight" />
-  <Polaris.phone backdrop />
+  <PolarisIcons.phone />
+  <PolarisIcons.phone major />
+  <PolarisIcons.phone class="w-4 h-4" color="highlight" />
+  <PolarisIcons.phone backdrop />
   ```
   """
   attr :rest, :global,
@@ -9283,10 +9297,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.phone_in />
-  <Polaris.phone_in major />
-  <Polaris.phone_in class="w-4 h-4" color="highlight" />
-  <Polaris.phone_in backdrop />
+  <PolarisIcons.phone_in />
+  <PolarisIcons.phone_in major />
+  <PolarisIcons.phone_in class="w-4 h-4" color="highlight" />
+  <PolarisIcons.phone_in backdrop />
   ```
   """
   attr :rest, :global,
@@ -9318,10 +9332,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.phone_out />
-  <Polaris.phone_out major />
-  <Polaris.phone_out class="w-4 h-4" color="highlight" />
-  <Polaris.phone_out backdrop />
+  <PolarisIcons.phone_out />
+  <PolarisIcons.phone_out major />
+  <PolarisIcons.phone_out class="w-4 h-4" color="highlight" />
+  <PolarisIcons.phone_out backdrop />
   ```
   """
   attr :rest, :global,
@@ -9353,10 +9367,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.pin />
-  <Polaris.pin minor />
-  <Polaris.pin class="w-4 h-4" color="highlight" />
-  <Polaris.pin minor backdrop />
+  <PolarisIcons.pin />
+  <PolarisIcons.pin minor />
+  <PolarisIcons.pin class="w-4 h-4" color="highlight" />
+  <PolarisIcons.pin minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9391,10 +9405,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.plan />
-  <Polaris.plan minor />
-  <Polaris.plan class="w-4 h-4" color="highlight" />
-  <Polaris.plan minor backdrop />
+  <PolarisIcons.plan />
+  <PolarisIcons.plan minor />
+  <PolarisIcons.plan class="w-4 h-4" color="highlight" />
+  <PolarisIcons.plan minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9429,10 +9443,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.play />
-  <Polaris.play minor />
-  <Polaris.play class="w-4 h-4" color="highlight" />
-  <Polaris.play minor backdrop />
+  <PolarisIcons.play />
+  <PolarisIcons.play minor />
+  <PolarisIcons.play class="w-4 h-4" color="highlight" />
+  <PolarisIcons.play minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9467,10 +9481,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.play_circle />
-  <Polaris.play_circle major />
-  <Polaris.play_circle class="w-4 h-4" color="highlight" />
-  <Polaris.play_circle backdrop />
+  <PolarisIcons.play_circle />
+  <PolarisIcons.play_circle major />
+  <PolarisIcons.play_circle class="w-4 h-4" color="highlight" />
+  <PolarisIcons.play_circle backdrop />
   ```
   """
   attr :rest, :global,
@@ -9502,9 +9516,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.plus minor />
-  <Polaris.plus minor class="w-4 h-4" color="highlight" />
-  <Polaris.plus minor backdrop />
+  <PolarisIcons.plus minor />
+  <PolarisIcons.plus minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.plus minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9536,10 +9550,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.point_of_sale />
-  <Polaris.point_of_sale major />
-  <Polaris.point_of_sale class="w-4 h-4" color="highlight" />
-  <Polaris.point_of_sale backdrop />
+  <PolarisIcons.point_of_sale />
+  <PolarisIcons.point_of_sale major />
+  <PolarisIcons.point_of_sale class="w-4 h-4" color="highlight" />
+  <PolarisIcons.point_of_sale backdrop />
   ```
   """
   attr :rest, :global,
@@ -9571,10 +9585,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.popular />
-  <Polaris.popular major />
-  <Polaris.popular class="w-4 h-4" color="highlight" />
-  <Polaris.popular backdrop />
+  <PolarisIcons.popular />
+  <PolarisIcons.popular major />
+  <PolarisIcons.popular class="w-4 h-4" color="highlight" />
+  <PolarisIcons.popular backdrop />
   ```
   """
   attr :rest, :global,
@@ -9606,9 +9620,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.price_lookup minor />
-  <Polaris.price_lookup minor class="w-4 h-4" color="highlight" />
-  <Polaris.price_lookup minor backdrop />
+  <PolarisIcons.price_lookup minor />
+  <PolarisIcons.price_lookup minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.price_lookup minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9640,10 +9654,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.print />
-  <Polaris.print minor />
-  <Polaris.print class="w-4 h-4" color="highlight" />
-  <Polaris.print minor backdrop />
+  <PolarisIcons.print />
+  <PolarisIcons.print minor />
+  <PolarisIcons.print class="w-4 h-4" color="highlight" />
+  <PolarisIcons.print minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9678,10 +9692,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.product_cost />
-  <Polaris.product_cost major />
-  <Polaris.product_cost class="w-4 h-4" color="highlight" />
-  <Polaris.product_cost backdrop />
+  <PolarisIcons.product_cost />
+  <PolarisIcons.product_cost major />
+  <PolarisIcons.product_cost class="w-4 h-4" color="highlight" />
+  <PolarisIcons.product_cost backdrop />
   ```
   """
   attr :rest, :global,
@@ -9713,9 +9727,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.product_returns minor />
-  <Polaris.product_returns minor class="w-4 h-4" color="highlight" />
-  <Polaris.product_returns minor backdrop />
+  <PolarisIcons.product_returns minor />
+  <PolarisIcons.product_returns minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.product_returns minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9747,10 +9761,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.products />
-  <Polaris.products minor />
-  <Polaris.products class="w-4 h-4" color="highlight" />
-  <Polaris.products minor backdrop />
+  <PolarisIcons.products />
+  <PolarisIcons.products minor />
+  <PolarisIcons.products class="w-4 h-4" color="highlight" />
+  <PolarisIcons.products minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9785,10 +9799,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.profile />
-  <Polaris.profile minor />
-  <Polaris.profile class="w-4 h-4" color="highlight" />
-  <Polaris.profile minor backdrop />
+  <PolarisIcons.profile />
+  <PolarisIcons.profile minor />
+  <PolarisIcons.profile class="w-4 h-4" color="highlight" />
+  <PolarisIcons.profile minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9823,9 +9837,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.promote minor />
-  <Polaris.promote minor class="w-4 h-4" color="highlight" />
-  <Polaris.promote minor backdrop />
+  <PolarisIcons.promote minor />
+  <PolarisIcons.promote minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.promote minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9857,10 +9871,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.question_mark />
-  <Polaris.question_mark minor />
-  <Polaris.question_mark class="w-4 h-4" color="highlight" />
-  <Polaris.question_mark minor backdrop />
+  <PolarisIcons.question_mark />
+  <PolarisIcons.question_mark minor />
+  <PolarisIcons.question_mark class="w-4 h-4" color="highlight" />
+  <PolarisIcons.question_mark minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9895,10 +9909,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.question_mark_inverse />
-  <Polaris.question_mark_inverse minor />
-  <Polaris.question_mark_inverse class="w-4 h-4" color="highlight" />
-  <Polaris.question_mark_inverse minor backdrop />
+  <PolarisIcons.question_mark_inverse />
+  <PolarisIcons.question_mark_inverse minor />
+  <PolarisIcons.question_mark_inverse class="w-4 h-4" color="highlight" />
+  <PolarisIcons.question_mark_inverse minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -9933,10 +9947,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.quick_sale />
-  <Polaris.quick_sale major />
-  <Polaris.quick_sale class="w-4 h-4" color="highlight" />
-  <Polaris.quick_sale backdrop />
+  <PolarisIcons.quick_sale />
+  <PolarisIcons.quick_sale major />
+  <PolarisIcons.quick_sale class="w-4 h-4" color="highlight" />
+  <PolarisIcons.quick_sale backdrop />
   ```
   """
   attr :rest, :global,
@@ -9968,9 +9982,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.read_time minor />
-  <Polaris.read_time minor class="w-4 h-4" color="highlight" />
-  <Polaris.read_time minor backdrop />
+  <PolarisIcons.read_time minor />
+  <PolarisIcons.read_time minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.read_time minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10002,10 +10016,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.receipt />
-  <Polaris.receipt major />
-  <Polaris.receipt class="w-4 h-4" color="highlight" />
-  <Polaris.receipt backdrop />
+  <PolarisIcons.receipt />
+  <PolarisIcons.receipt major />
+  <PolarisIcons.receipt class="w-4 h-4" color="highlight" />
+  <PolarisIcons.receipt backdrop />
   ```
   """
   attr :rest, :global,
@@ -10037,10 +10051,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.recent_searches />
-  <Polaris.recent_searches major />
-  <Polaris.recent_searches class="w-4 h-4" color="highlight" />
-  <Polaris.recent_searches backdrop />
+  <PolarisIcons.recent_searches />
+  <PolarisIcons.recent_searches major />
+  <PolarisIcons.recent_searches class="w-4 h-4" color="highlight" />
+  <PolarisIcons.recent_searches backdrop />
   ```
   """
   attr :rest, :global,
@@ -10072,10 +10086,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.redo />
-  <Polaris.redo major />
-  <Polaris.redo class="w-4 h-4" color="highlight" />
-  <Polaris.redo backdrop />
+  <PolarisIcons.redo />
+  <PolarisIcons.redo major />
+  <PolarisIcons.redo class="w-4 h-4" color="highlight" />
+  <PolarisIcons.redo backdrop />
   ```
   """
   attr :rest, :global,
@@ -10107,10 +10121,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.referral />
-  <Polaris.referral major />
-  <Polaris.referral class="w-4 h-4" color="highlight" />
-  <Polaris.referral backdrop />
+  <PolarisIcons.referral />
+  <PolarisIcons.referral major />
+  <PolarisIcons.referral class="w-4 h-4" color="highlight" />
+  <PolarisIcons.referral backdrop />
   ```
   """
   attr :rest, :global,
@@ -10142,10 +10156,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.referral_code />
-  <Polaris.referral_code major />
-  <Polaris.referral_code class="w-4 h-4" color="highlight" />
-  <Polaris.referral_code backdrop />
+  <PolarisIcons.referral_code />
+  <PolarisIcons.referral_code major />
+  <PolarisIcons.referral_code class="w-4 h-4" color="highlight" />
+  <PolarisIcons.referral_code backdrop />
   ```
   """
   attr :rest, :global,
@@ -10182,10 +10196,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.refresh />
-  <Polaris.refresh minor />
-  <Polaris.refresh class="w-4 h-4" color="highlight" />
-  <Polaris.refresh minor backdrop />
+  <PolarisIcons.refresh />
+  <PolarisIcons.refresh minor />
+  <PolarisIcons.refresh class="w-4 h-4" color="highlight" />
+  <PolarisIcons.refresh minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10220,10 +10234,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.refund />
-  <Polaris.refund minor />
-  <Polaris.refund class="w-4 h-4" color="highlight" />
-  <Polaris.refund minor backdrop />
+  <PolarisIcons.refund />
+  <PolarisIcons.refund minor />
+  <PolarisIcons.refund class="w-4 h-4" color="highlight" />
+  <PolarisIcons.refund minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10258,10 +10272,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.remove_product />
-  <Polaris.remove_product major />
-  <Polaris.remove_product class="w-4 h-4" color="highlight" />
-  <Polaris.remove_product backdrop />
+  <PolarisIcons.remove_product />
+  <PolarisIcons.remove_product major />
+  <PolarisIcons.remove_product class="w-4 h-4" color="highlight" />
+  <PolarisIcons.remove_product backdrop />
   ```
   """
   attr :rest, :global,
@@ -10293,10 +10307,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.repeat_order />
-  <Polaris.repeat_order major />
-  <Polaris.repeat_order class="w-4 h-4" color="highlight" />
-  <Polaris.repeat_order backdrop />
+  <PolarisIcons.repeat_order />
+  <PolarisIcons.repeat_order major />
+  <PolarisIcons.repeat_order class="w-4 h-4" color="highlight" />
+  <PolarisIcons.repeat_order backdrop />
   ```
   """
   attr :rest, :global,
@@ -10328,10 +10342,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.replace />
-  <Polaris.replace major />
-  <Polaris.replace class="w-4 h-4" color="highlight" />
-  <Polaris.replace backdrop />
+  <PolarisIcons.replace />
+  <PolarisIcons.replace major />
+  <PolarisIcons.replace class="w-4 h-4" color="highlight" />
+  <PolarisIcons.replace backdrop />
   ```
   """
   attr :rest, :global,
@@ -10363,9 +10377,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.replay minor />
-  <Polaris.replay minor class="w-4 h-4" color="highlight" />
-  <Polaris.replay minor backdrop />
+  <PolarisIcons.replay minor />
+  <PolarisIcons.replay minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.replay minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10397,9 +10411,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.report minor />
-  <Polaris.report minor class="w-4 h-4" color="highlight" />
-  <Polaris.report minor backdrop />
+  <PolarisIcons.report minor />
+  <PolarisIcons.report minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.report minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10431,10 +10445,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.reports />
-  <Polaris.reports major />
-  <Polaris.reports class="w-4 h-4" color="highlight" />
-  <Polaris.reports backdrop />
+  <PolarisIcons.reports />
+  <PolarisIcons.reports major />
+  <PolarisIcons.reports class="w-4 h-4" color="highlight" />
+  <PolarisIcons.reports backdrop />
   ```
   """
   attr :rest, :global,
@@ -10466,9 +10480,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.reset minor />
-  <Polaris.reset minor class="w-4 h-4" color="highlight" />
-  <Polaris.reset minor backdrop />
+  <PolarisIcons.reset minor />
+  <PolarisIcons.reset minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.reset minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10500,10 +10514,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.resources />
-  <Polaris.resources major />
-  <Polaris.resources class="w-4 h-4" color="highlight" />
-  <Polaris.resources backdrop />
+  <PolarisIcons.resources />
+  <PolarisIcons.resources major />
+  <PolarisIcons.resources class="w-4 h-4" color="highlight" />
+  <PolarisIcons.resources backdrop />
   ```
   """
   attr :rest, :global,
@@ -10535,9 +10549,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.return minor />
-  <Polaris.return minor class="w-4 h-4" color="highlight" />
-  <Polaris.return minor backdrop />
+  <PolarisIcons.return minor />
+  <PolarisIcons.return minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.return minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10569,10 +10583,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.risk />
-  <Polaris.risk minor />
-  <Polaris.risk class="w-4 h-4" color="highlight" />
-  <Polaris.risk minor backdrop />
+  <PolarisIcons.risk />
+  <PolarisIcons.risk minor />
+  <PolarisIcons.risk class="w-4 h-4" color="highlight" />
+  <PolarisIcons.risk minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10607,10 +10621,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sandbox />
-  <Polaris.sandbox major />
-  <Polaris.sandbox class="w-4 h-4" color="highlight" />
-  <Polaris.sandbox backdrop />
+  <PolarisIcons.sandbox />
+  <PolarisIcons.sandbox major />
+  <PolarisIcons.sandbox class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sandbox backdrop />
   ```
   """
   attr :rest, :global,
@@ -10642,9 +10656,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.save minor />
-  <Polaris.save minor class="w-4 h-4" color="highlight" />
-  <Polaris.save minor backdrop />
+  <PolarisIcons.save minor />
+  <PolarisIcons.save minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.save minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10676,10 +10690,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.search />
-  <Polaris.search minor />
-  <Polaris.search class="w-4 h-4" color="highlight" />
-  <Polaris.search minor backdrop />
+  <PolarisIcons.search />
+  <PolarisIcons.search minor />
+  <PolarisIcons.search class="w-4 h-4" color="highlight" />
+  <PolarisIcons.search minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10714,10 +10728,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.section />
-  <Polaris.section major />
-  <Polaris.section class="w-4 h-4" color="highlight" />
-  <Polaris.section backdrop />
+  <PolarisIcons.section />
+  <PolarisIcons.section major />
+  <PolarisIcons.section class="w-4 h-4" color="highlight" />
+  <PolarisIcons.section backdrop />
   ```
   """
   attr :rest, :global,
@@ -10749,10 +10763,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.secure />
-  <Polaris.secure major />
-  <Polaris.secure class="w-4 h-4" color="highlight" />
-  <Polaris.secure backdrop />
+  <PolarisIcons.secure />
+  <PolarisIcons.secure major />
+  <PolarisIcons.secure class="w-4 h-4" color="highlight" />
+  <PolarisIcons.secure backdrop />
   ```
   """
   attr :rest, :global,
@@ -10784,9 +10798,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.select minor />
-  <Polaris.select minor class="w-4 h-4" color="highlight" />
-  <Polaris.select minor backdrop />
+  <PolarisIcons.select minor />
+  <PolarisIcons.select minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.select minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10818,10 +10832,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.send />
-  <Polaris.send major />
-  <Polaris.send class="w-4 h-4" color="highlight" />
-  <Polaris.send backdrop />
+  <PolarisIcons.send />
+  <PolarisIcons.send major />
+  <PolarisIcons.send class="w-4 h-4" color="highlight" />
+  <PolarisIcons.send backdrop />
   ```
   """
   attr :rest, :global,
@@ -10853,10 +10867,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.settings />
-  <Polaris.settings minor />
-  <Polaris.settings class="w-4 h-4" color="highlight" />
-  <Polaris.settings minor backdrop />
+  <PolarisIcons.settings />
+  <PolarisIcons.settings minor />
+  <PolarisIcons.settings class="w-4 h-4" color="highlight" />
+  <PolarisIcons.settings minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10891,9 +10905,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.share minor />
-  <Polaris.share minor class="w-4 h-4" color="highlight" />
-  <Polaris.share minor backdrop />
+  <PolarisIcons.share minor />
+  <PolarisIcons.share minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.share minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10925,9 +10939,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.share_ios minor />
-  <Polaris.share_ios minor class="w-4 h-4" color="highlight" />
-  <Polaris.share_ios minor backdrop />
+  <PolarisIcons.share_ios minor />
+  <PolarisIcons.share_ios minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.share_ios minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -10959,10 +10973,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.shipment />
-  <Polaris.shipment major />
-  <Polaris.shipment class="w-4 h-4" color="highlight" />
-  <Polaris.shipment backdrop />
+  <PolarisIcons.shipment />
+  <PolarisIcons.shipment major />
+  <PolarisIcons.shipment class="w-4 h-4" color="highlight" />
+  <PolarisIcons.shipment backdrop />
   ```
   """
   attr :rest, :global,
@@ -10994,10 +11008,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.shopcodes />
-  <Polaris.shopcodes major />
-  <Polaris.shopcodes class="w-4 h-4" color="highlight" />
-  <Polaris.shopcodes backdrop />
+  <PolarisIcons.shopcodes />
+  <PolarisIcons.shopcodes major />
+  <PolarisIcons.shopcodes class="w-4 h-4" color="highlight" />
+  <PolarisIcons.shopcodes backdrop />
   ```
   """
   attr :rest, :global,
@@ -11029,10 +11043,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sidebar_left />
-  <Polaris.sidebar_left major />
-  <Polaris.sidebar_left class="w-4 h-4" color="highlight" />
-  <Polaris.sidebar_left backdrop />
+  <PolarisIcons.sidebar_left />
+  <PolarisIcons.sidebar_left major />
+  <PolarisIcons.sidebar_left class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sidebar_left backdrop />
   ```
   """
   attr :rest, :global,
@@ -11064,10 +11078,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sidebar_right />
-  <Polaris.sidebar_right major />
-  <Polaris.sidebar_right class="w-4 h-4" color="highlight" />
-  <Polaris.sidebar_right backdrop />
+  <PolarisIcons.sidebar_right />
+  <PolarisIcons.sidebar_right major />
+  <PolarisIcons.sidebar_right class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sidebar_right backdrop />
   ```
   """
   attr :rest, :global,
@@ -11099,10 +11113,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.slideshow />
-  <Polaris.slideshow major />
-  <Polaris.slideshow class="w-4 h-4" color="highlight" />
-  <Polaris.slideshow backdrop />
+  <PolarisIcons.slideshow />
+  <PolarisIcons.slideshow major />
+  <PolarisIcons.slideshow class="w-4 h-4" color="highlight" />
+  <PolarisIcons.slideshow backdrop />
   ```
   """
   attr :rest, :global,
@@ -11134,10 +11148,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.smiley_happy />
-  <Polaris.smiley_happy major />
-  <Polaris.smiley_happy class="w-4 h-4" color="highlight" />
-  <Polaris.smiley_happy backdrop />
+  <PolarisIcons.smiley_happy />
+  <PolarisIcons.smiley_happy major />
+  <PolarisIcons.smiley_happy class="w-4 h-4" color="highlight" />
+  <PolarisIcons.smiley_happy backdrop />
   ```
   """
   attr :rest, :global,
@@ -11169,10 +11183,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.smiley_joy />
-  <Polaris.smiley_joy major />
-  <Polaris.smiley_joy class="w-4 h-4" color="highlight" />
-  <Polaris.smiley_joy backdrop />
+  <PolarisIcons.smiley_joy />
+  <PolarisIcons.smiley_joy major />
+  <PolarisIcons.smiley_joy class="w-4 h-4" color="highlight" />
+  <PolarisIcons.smiley_joy backdrop />
   ```
   """
   attr :rest, :global,
@@ -11204,10 +11218,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.smiley_neutral />
-  <Polaris.smiley_neutral major />
-  <Polaris.smiley_neutral class="w-4 h-4" color="highlight" />
-  <Polaris.smiley_neutral backdrop />
+  <PolarisIcons.smiley_neutral />
+  <PolarisIcons.smiley_neutral major />
+  <PolarisIcons.smiley_neutral class="w-4 h-4" color="highlight" />
+  <PolarisIcons.smiley_neutral backdrop />
   ```
   """
   attr :rest, :global,
@@ -11239,10 +11253,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.smiley_sad />
-  <Polaris.smiley_sad major />
-  <Polaris.smiley_sad class="w-4 h-4" color="highlight" />
-  <Polaris.smiley_sad backdrop />
+  <PolarisIcons.smiley_sad />
+  <PolarisIcons.smiley_sad major />
+  <PolarisIcons.smiley_sad class="w-4 h-4" color="highlight" />
+  <PolarisIcons.smiley_sad backdrop />
   ```
   """
   attr :rest, :global,
@@ -11274,10 +11288,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.social_ad />
-  <Polaris.social_ad major />
-  <Polaris.social_ad class="w-4 h-4" color="highlight" />
-  <Polaris.social_ad backdrop />
+  <PolarisIcons.social_ad />
+  <PolarisIcons.social_ad major />
+  <PolarisIcons.social_ad class="w-4 h-4" color="highlight" />
+  <PolarisIcons.social_ad backdrop />
   ```
   """
   attr :rest, :global,
@@ -11309,10 +11323,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.social_post />
-  <Polaris.social_post major />
-  <Polaris.social_post class="w-4 h-4" color="highlight" />
-  <Polaris.social_post backdrop />
+  <PolarisIcons.social_post />
+  <PolarisIcons.social_post major />
+  <PolarisIcons.social_post class="w-4 h-4" color="highlight" />
+  <PolarisIcons.social_post backdrop />
   ```
   """
   attr :rest, :global,
@@ -11344,10 +11358,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.soft_pack />
-  <Polaris.soft_pack major />
-  <Polaris.soft_pack class="w-4 h-4" color="highlight" />
-  <Polaris.soft_pack backdrop />
+  <PolarisIcons.soft_pack />
+  <PolarisIcons.soft_pack major />
+  <PolarisIcons.soft_pack class="w-4 h-4" color="highlight" />
+  <PolarisIcons.soft_pack backdrop />
   ```
   """
   attr :rest, :global,
@@ -11379,9 +11393,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sort minor />
-  <Polaris.sort minor class="w-4 h-4" color="highlight" />
-  <Polaris.sort minor backdrop />
+  <PolarisIcons.sort minor />
+  <PolarisIcons.sort minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sort minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -11413,10 +11427,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sort_ascending />
-  <Polaris.sort_ascending major />
-  <Polaris.sort_ascending class="w-4 h-4" color="highlight" />
-  <Polaris.sort_ascending backdrop />
+  <PolarisIcons.sort_ascending />
+  <PolarisIcons.sort_ascending major />
+  <PolarisIcons.sort_ascending class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sort_ascending backdrop />
   ```
   """
   attr :rest, :global,
@@ -11448,10 +11462,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sort_descending />
-  <Polaris.sort_descending major />
-  <Polaris.sort_descending class="w-4 h-4" color="highlight" />
-  <Polaris.sort_descending backdrop />
+  <PolarisIcons.sort_descending />
+  <PolarisIcons.sort_descending major />
+  <PolarisIcons.sort_descending class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sort_descending backdrop />
   ```
   """
   attr :rest, :global,
@@ -11483,10 +11497,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.sound />
-  <Polaris.sound major />
-  <Polaris.sound class="w-4 h-4" color="highlight" />
-  <Polaris.sound backdrop />
+  <PolarisIcons.sound />
+  <PolarisIcons.sound major />
+  <PolarisIcons.sound class="w-4 h-4" color="highlight" />
+  <PolarisIcons.sound backdrop />
   ```
   """
   attr :rest, :global,
@@ -11518,9 +11532,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.star_filled minor />
-  <Polaris.star_filled minor class="w-4 h-4" color="highlight" />
-  <Polaris.star_filled minor backdrop />
+  <PolarisIcons.star_filled minor />
+  <PolarisIcons.star_filled minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.star_filled minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -11552,9 +11566,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.star_outline minor />
-  <Polaris.star_outline minor class="w-4 h-4" color="highlight" />
-  <Polaris.star_outline minor backdrop />
+  <PolarisIcons.star_outline minor />
+  <PolarisIcons.star_outline minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.star_outline minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -11586,10 +11600,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.status_active />
-  <Polaris.status_active major />
-  <Polaris.status_active class="w-4 h-4" color="highlight" />
-  <Polaris.status_active backdrop />
+  <PolarisIcons.status_active />
+  <PolarisIcons.status_active major />
+  <PolarisIcons.status_active class="w-4 h-4" color="highlight" />
+  <PolarisIcons.status_active backdrop />
   ```
   """
   attr :rest, :global,
@@ -11621,10 +11635,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.store />
-  <Polaris.store minor />
-  <Polaris.store class="w-4 h-4" color="highlight" />
-  <Polaris.store minor backdrop />
+  <PolarisIcons.store />
+  <PolarisIcons.store minor />
+  <PolarisIcons.store class="w-4 h-4" color="highlight" />
+  <PolarisIcons.store minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -11659,10 +11673,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.store_status />
-  <Polaris.store_status major />
-  <Polaris.store_status class="w-4 h-4" color="highlight" />
-  <Polaris.store_status backdrop />
+  <PolarisIcons.store_status />
+  <PolarisIcons.store_status major />
+  <PolarisIcons.store_status class="w-4 h-4" color="highlight" />
+  <PolarisIcons.store_status backdrop />
   ```
   """
   attr :rest, :global,
@@ -11694,10 +11708,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tablet />
-  <Polaris.tablet major />
-  <Polaris.tablet class="w-4 h-4" color="highlight" />
-  <Polaris.tablet backdrop />
+  <PolarisIcons.tablet />
+  <PolarisIcons.tablet major />
+  <PolarisIcons.tablet class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tablet backdrop />
   ```
   """
   attr :rest, :global,
@@ -11729,10 +11743,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tap_chip />
-  <Polaris.tap_chip major />
-  <Polaris.tap_chip class="w-4 h-4" color="highlight" />
-  <Polaris.tap_chip backdrop />
+  <PolarisIcons.tap_chip />
+  <PolarisIcons.tap_chip major />
+  <PolarisIcons.tap_chip class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tap_chip backdrop />
   ```
   """
   attr :rest, :global,
@@ -11764,10 +11778,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tax />
-  <Polaris.tax major />
-  <Polaris.tax class="w-4 h-4" color="highlight" />
-  <Polaris.tax backdrop />
+  <PolarisIcons.tax />
+  <PolarisIcons.tax major />
+  <PolarisIcons.tax class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tax backdrop />
   ```
   """
   attr :rest, :global,
@@ -11799,10 +11813,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.team />
-  <Polaris.team major />
-  <Polaris.team class="w-4 h-4" color="highlight" />
-  <Polaris.team backdrop />
+  <PolarisIcons.team />
+  <PolarisIcons.team major />
+  <PolarisIcons.team class="w-4 h-4" color="highlight" />
+  <PolarisIcons.team backdrop />
   ```
   """
   attr :rest, :global,
@@ -11834,10 +11848,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.template />
-  <Polaris.template minor />
-  <Polaris.template class="w-4 h-4" color="highlight" />
-  <Polaris.template minor backdrop />
+  <PolarisIcons.template />
+  <PolarisIcons.template minor />
+  <PolarisIcons.template class="w-4 h-4" color="highlight" />
+  <PolarisIcons.template minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -11872,10 +11886,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.text />
-  <Polaris.text major />
-  <Polaris.text class="w-4 h-4" color="highlight" />
-  <Polaris.text backdrop />
+  <PolarisIcons.text />
+  <PolarisIcons.text major />
+  <PolarisIcons.text class="w-4 h-4" color="highlight" />
+  <PolarisIcons.text backdrop />
   ```
   """
   attr :rest, :global,
@@ -11907,10 +11921,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.text_alignment_center />
-  <Polaris.text_alignment_center major />
-  <Polaris.text_alignment_center class="w-4 h-4" color="highlight" />
-  <Polaris.text_alignment_center backdrop />
+  <PolarisIcons.text_alignment_center />
+  <PolarisIcons.text_alignment_center major />
+  <PolarisIcons.text_alignment_center class="w-4 h-4" color="highlight" />
+  <PolarisIcons.text_alignment_center backdrop />
   ```
   """
   attr :rest, :global,
@@ -11942,10 +11956,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.text_alignment_left />
-  <Polaris.text_alignment_left major />
-  <Polaris.text_alignment_left class="w-4 h-4" color="highlight" />
-  <Polaris.text_alignment_left backdrop />
+  <PolarisIcons.text_alignment_left />
+  <PolarisIcons.text_alignment_left major />
+  <PolarisIcons.text_alignment_left class="w-4 h-4" color="highlight" />
+  <PolarisIcons.text_alignment_left backdrop />
   ```
   """
   attr :rest, :global,
@@ -11977,10 +11991,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.text_alignment_right />
-  <Polaris.text_alignment_right major />
-  <Polaris.text_alignment_right class="w-4 h-4" color="highlight" />
-  <Polaris.text_alignment_right backdrop />
+  <PolarisIcons.text_alignment_right />
+  <PolarisIcons.text_alignment_right major />
+  <PolarisIcons.text_alignment_right class="w-4 h-4" color="highlight" />
+  <PolarisIcons.text_alignment_right backdrop />
   ```
   """
   attr :rest, :global,
@@ -12012,10 +12026,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.text_block />
-  <Polaris.text_block major />
-  <Polaris.text_block class="w-4 h-4" color="highlight" />
-  <Polaris.text_block backdrop />
+  <PolarisIcons.text_block />
+  <PolarisIcons.text_block major />
+  <PolarisIcons.text_block class="w-4 h-4" color="highlight" />
+  <PolarisIcons.text_block backdrop />
   ```
   """
   attr :rest, :global,
@@ -12047,10 +12061,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.theme_edit />
-  <Polaris.theme_edit major />
-  <Polaris.theme_edit class="w-4 h-4" color="highlight" />
-  <Polaris.theme_edit backdrop />
+  <PolarisIcons.theme_edit />
+  <PolarisIcons.theme_edit major />
+  <PolarisIcons.theme_edit class="w-4 h-4" color="highlight" />
+  <PolarisIcons.theme_edit backdrop />
   ```
   """
   attr :rest, :global,
@@ -12082,10 +12096,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.theme_store />
-  <Polaris.theme_store major />
-  <Polaris.theme_store class="w-4 h-4" color="highlight" />
-  <Polaris.theme_store backdrop />
+  <PolarisIcons.theme_store />
+  <PolarisIcons.theme_store major />
+  <PolarisIcons.theme_store class="w-4 h-4" color="highlight" />
+  <PolarisIcons.theme_store backdrop />
   ```
   """
   attr :rest, :global,
@@ -12117,10 +12131,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.themes />
-  <Polaris.themes major />
-  <Polaris.themes class="w-4 h-4" color="highlight" />
-  <Polaris.themes backdrop />
+  <PolarisIcons.themes />
+  <PolarisIcons.themes major />
+  <PolarisIcons.themes class="w-4 h-4" color="highlight" />
+  <PolarisIcons.themes backdrop />
   ```
   """
   attr :rest, :global,
@@ -12152,10 +12166,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.thumbs_down />
-  <Polaris.thumbs_down minor />
-  <Polaris.thumbs_down class="w-4 h-4" color="highlight" />
-  <Polaris.thumbs_down minor backdrop />
+  <PolarisIcons.thumbs_down />
+  <PolarisIcons.thumbs_down minor />
+  <PolarisIcons.thumbs_down class="w-4 h-4" color="highlight" />
+  <PolarisIcons.thumbs_down minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12190,10 +12204,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.thumbs_up />
-  <Polaris.thumbs_up minor />
-  <Polaris.thumbs_up class="w-4 h-4" color="highlight" />
-  <Polaris.thumbs_up minor backdrop />
+  <PolarisIcons.thumbs_up />
+  <PolarisIcons.thumbs_up minor />
+  <PolarisIcons.thumbs_up class="w-4 h-4" color="highlight" />
+  <PolarisIcons.thumbs_up minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12228,9 +12242,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tick minor />
-  <Polaris.tick minor class="w-4 h-4" color="highlight" />
-  <Polaris.tick minor backdrop />
+  <PolarisIcons.tick minor />
+  <PolarisIcons.tick minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tick minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12262,9 +12276,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tick_small minor />
-  <Polaris.tick_small minor class="w-4 h-4" color="highlight" />
-  <Polaris.tick_small minor backdrop />
+  <PolarisIcons.tick_small minor />
+  <PolarisIcons.tick_small minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tick_small minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12296,10 +12310,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.timeline_attachment />
-  <Polaris.timeline_attachment major />
-  <Polaris.timeline_attachment class="w-4 h-4" color="highlight" />
-  <Polaris.timeline_attachment backdrop />
+  <PolarisIcons.timeline_attachment />
+  <PolarisIcons.timeline_attachment major />
+  <PolarisIcons.timeline_attachment class="w-4 h-4" color="highlight" />
+  <PolarisIcons.timeline_attachment backdrop />
   ```
   """
   attr :rest, :global,
@@ -12331,10 +12345,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tips />
-  <Polaris.tips major />
-  <Polaris.tips class="w-4 h-4" color="highlight" />
-  <Polaris.tips backdrop />
+  <PolarisIcons.tips />
+  <PolarisIcons.tips major />
+  <PolarisIcons.tips class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tips backdrop />
   ```
   """
   attr :rest, :global,
@@ -12366,9 +12380,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.title minor />
-  <Polaris.title minor class="w-4 h-4" color="highlight" />
-  <Polaris.title minor backdrop />
+  <PolarisIcons.title minor />
+  <PolarisIcons.title minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.title minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12400,9 +12414,9 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.toggle minor />
-  <Polaris.toggle minor class="w-4 h-4" color="highlight" />
-  <Polaris.toggle minor backdrop />
+  <PolarisIcons.toggle minor />
+  <PolarisIcons.toggle minor class="w-4 h-4" color="highlight" />
+  <PolarisIcons.toggle minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12434,10 +12448,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.tools />
-  <Polaris.tools major />
-  <Polaris.tools class="w-4 h-4" color="highlight" />
-  <Polaris.tools backdrop />
+  <PolarisIcons.tools />
+  <PolarisIcons.tools major />
+  <PolarisIcons.tools class="w-4 h-4" color="highlight" />
+  <PolarisIcons.tools backdrop />
   ```
   """
   attr :rest, :global,
@@ -12469,10 +12483,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction />
-  <Polaris.transaction major />
-  <Polaris.transaction class="w-4 h-4" color="highlight" />
-  <Polaris.transaction backdrop />
+  <PolarisIcons.transaction />
+  <PolarisIcons.transaction major />
+  <PolarisIcons.transaction class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction backdrop />
   ```
   """
   attr :rest, :global,
@@ -12504,10 +12518,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction_fee_dollar />
-  <Polaris.transaction_fee_dollar major />
-  <Polaris.transaction_fee_dollar class="w-4 h-4" color="highlight" />
-  <Polaris.transaction_fee_dollar backdrop />
+  <PolarisIcons.transaction_fee_dollar />
+  <PolarisIcons.transaction_fee_dollar major />
+  <PolarisIcons.transaction_fee_dollar class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction_fee_dollar backdrop />
   ```
   """
   attr :rest, :global,
@@ -12539,10 +12553,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction_fee_euro />
-  <Polaris.transaction_fee_euro major />
-  <Polaris.transaction_fee_euro class="w-4 h-4" color="highlight" />
-  <Polaris.transaction_fee_euro backdrop />
+  <PolarisIcons.transaction_fee_euro />
+  <PolarisIcons.transaction_fee_euro major />
+  <PolarisIcons.transaction_fee_euro class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction_fee_euro backdrop />
   ```
   """
   attr :rest, :global,
@@ -12574,10 +12588,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction_fee_pound />
-  <Polaris.transaction_fee_pound major />
-  <Polaris.transaction_fee_pound class="w-4 h-4" color="highlight" />
-  <Polaris.transaction_fee_pound backdrop />
+  <PolarisIcons.transaction_fee_pound />
+  <PolarisIcons.transaction_fee_pound major />
+  <PolarisIcons.transaction_fee_pound class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction_fee_pound backdrop />
   ```
   """
   attr :rest, :global,
@@ -12609,10 +12623,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction_fee_rupee />
-  <Polaris.transaction_fee_rupee major />
-  <Polaris.transaction_fee_rupee class="w-4 h-4" color="highlight" />
-  <Polaris.transaction_fee_rupee backdrop />
+  <PolarisIcons.transaction_fee_rupee />
+  <PolarisIcons.transaction_fee_rupee major />
+  <PolarisIcons.transaction_fee_rupee class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction_fee_rupee backdrop />
   ```
   """
   attr :rest, :global,
@@ -12644,10 +12658,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transaction_fee_yen />
-  <Polaris.transaction_fee_yen major />
-  <Polaris.transaction_fee_yen class="w-4 h-4" color="highlight" />
-  <Polaris.transaction_fee_yen backdrop />
+  <PolarisIcons.transaction_fee_yen />
+  <PolarisIcons.transaction_fee_yen major />
+  <PolarisIcons.transaction_fee_yen class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transaction_fee_yen backdrop />
   ```
   """
   attr :rest, :global,
@@ -12679,10 +12693,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transfer />
-  <Polaris.transfer major />
-  <Polaris.transfer class="w-4 h-4" color="highlight" />
-  <Polaris.transfer backdrop />
+  <PolarisIcons.transfer />
+  <PolarisIcons.transfer major />
+  <PolarisIcons.transfer class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transfer backdrop />
   ```
   """
   attr :rest, :global,
@@ -12714,10 +12728,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transfer_in />
-  <Polaris.transfer_in major />
-  <Polaris.transfer_in class="w-4 h-4" color="highlight" />
-  <Polaris.transfer_in backdrop />
+  <PolarisIcons.transfer_in />
+  <PolarisIcons.transfer_in major />
+  <PolarisIcons.transfer_in class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transfer_in backdrop />
   ```
   """
   attr :rest, :global,
@@ -12749,10 +12763,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transfer_out />
-  <Polaris.transfer_out major />
-  <Polaris.transfer_out class="w-4 h-4" color="highlight" />
-  <Polaris.transfer_out backdrop />
+  <PolarisIcons.transfer_out />
+  <PolarisIcons.transfer_out major />
+  <PolarisIcons.transfer_out class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transfer_out backdrop />
   ```
   """
   attr :rest, :global,
@@ -12784,10 +12798,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transfer_within_shopify />
-  <Polaris.transfer_within_shopify major />
-  <Polaris.transfer_within_shopify class="w-4 h-4" color="highlight" />
-  <Polaris.transfer_within_shopify backdrop />
+  <PolarisIcons.transfer_within_shopify />
+  <PolarisIcons.transfer_within_shopify major />
+  <PolarisIcons.transfer_within_shopify class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transfer_within_shopify backdrop />
   ```
   """
   attr :rest, :global,
@@ -12819,10 +12833,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.transport />
-  <Polaris.transport major />
-  <Polaris.transport class="w-4 h-4" color="highlight" />
-  <Polaris.transport backdrop />
+  <PolarisIcons.transport />
+  <PolarisIcons.transport major />
+  <PolarisIcons.transport class="w-4 h-4" color="highlight" />
+  <PolarisIcons.transport backdrop />
   ```
   """
   attr :rest, :global,
@@ -12854,10 +12868,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.troubleshoot />
-  <Polaris.troubleshoot major />
-  <Polaris.troubleshoot class="w-4 h-4" color="highlight" />
-  <Polaris.troubleshoot backdrop />
+  <PolarisIcons.troubleshoot />
+  <PolarisIcons.troubleshoot major />
+  <PolarisIcons.troubleshoot class="w-4 h-4" color="highlight" />
+  <PolarisIcons.troubleshoot backdrop />
   ```
   """
   attr :rest, :global,
@@ -12889,10 +12903,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.type />
-  <Polaris.type minor />
-  <Polaris.type class="w-4 h-4" color="highlight" />
-  <Polaris.type minor backdrop />
+  <PolarisIcons.type />
+  <PolarisIcons.type minor />
+  <PolarisIcons.type class="w-4 h-4" color="highlight" />
+  <PolarisIcons.type minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -12927,10 +12941,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.undo />
-  <Polaris.undo major />
-  <Polaris.undo class="w-4 h-4" color="highlight" />
-  <Polaris.undo backdrop />
+  <PolarisIcons.undo />
+  <PolarisIcons.undo major />
+  <PolarisIcons.undo class="w-4 h-4" color="highlight" />
+  <PolarisIcons.undo backdrop />
   ```
   """
   attr :rest, :global,
@@ -12962,10 +12976,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.unfulfilled />
-  <Polaris.unfulfilled major />
-  <Polaris.unfulfilled class="w-4 h-4" color="highlight" />
-  <Polaris.unfulfilled backdrop />
+  <PolarisIcons.unfulfilled />
+  <PolarisIcons.unfulfilled major />
+  <PolarisIcons.unfulfilled class="w-4 h-4" color="highlight" />
+  <PolarisIcons.unfulfilled backdrop />
   ```
   """
   attr :rest, :global,
@@ -12997,10 +13011,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.unknown_device />
-  <Polaris.unknown_device major />
-  <Polaris.unknown_device class="w-4 h-4" color="highlight" />
-  <Polaris.unknown_device backdrop />
+  <PolarisIcons.unknown_device />
+  <PolarisIcons.unknown_device major />
+  <PolarisIcons.unknown_device class="w-4 h-4" color="highlight" />
+  <PolarisIcons.unknown_device backdrop />
   ```
   """
   attr :rest, :global,
@@ -13032,10 +13046,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.update_inventory />
-  <Polaris.update_inventory major />
-  <Polaris.update_inventory class="w-4 h-4" color="highlight" />
-  <Polaris.update_inventory backdrop />
+  <PolarisIcons.update_inventory />
+  <PolarisIcons.update_inventory major />
+  <PolarisIcons.update_inventory class="w-4 h-4" color="highlight" />
+  <PolarisIcons.update_inventory backdrop />
   ```
   """
   attr :rest, :global,
@@ -13067,10 +13081,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.upload />
-  <Polaris.upload major />
-  <Polaris.upload class="w-4 h-4" color="highlight" />
-  <Polaris.upload backdrop />
+  <PolarisIcons.upload />
+  <PolarisIcons.upload major />
+  <PolarisIcons.upload class="w-4 h-4" color="highlight" />
+  <PolarisIcons.upload backdrop />
   ```
   """
   attr :rest, :global,
@@ -13102,10 +13116,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.variant />
-  <Polaris.variant major />
-  <Polaris.variant class="w-4 h-4" color="highlight" />
-  <Polaris.variant backdrop />
+  <PolarisIcons.variant />
+  <PolarisIcons.variant major />
+  <PolarisIcons.variant class="w-4 h-4" color="highlight" />
+  <PolarisIcons.variant backdrop />
   ```
   """
   attr :rest, :global,
@@ -13137,10 +13151,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.view />
-  <Polaris.view minor />
-  <Polaris.view class="w-4 h-4" color="highlight" />
-  <Polaris.view minor backdrop />
+  <PolarisIcons.view />
+  <PolarisIcons.view minor />
+  <PolarisIcons.view class="w-4 h-4" color="highlight" />
+  <PolarisIcons.view minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -13175,10 +13189,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.viewport_narrow />
-  <Polaris.viewport_narrow major />
-  <Polaris.viewport_narrow class="w-4 h-4" color="highlight" />
-  <Polaris.viewport_narrow backdrop />
+  <PolarisIcons.viewport_narrow />
+  <PolarisIcons.viewport_narrow major />
+  <PolarisIcons.viewport_narrow class="w-4 h-4" color="highlight" />
+  <PolarisIcons.viewport_narrow backdrop />
   ```
   """
   attr :rest, :global,
@@ -13210,10 +13224,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.viewport_short />
-  <Polaris.viewport_short major />
-  <Polaris.viewport_short class="w-4 h-4" color="highlight" />
-  <Polaris.viewport_short backdrop />
+  <PolarisIcons.viewport_short />
+  <PolarisIcons.viewport_short major />
+  <PolarisIcons.viewport_short class="w-4 h-4" color="highlight" />
+  <PolarisIcons.viewport_short backdrop />
   ```
   """
   attr :rest, :global,
@@ -13245,10 +13259,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.viewport_tall />
-  <Polaris.viewport_tall major />
-  <Polaris.viewport_tall class="w-4 h-4" color="highlight" />
-  <Polaris.viewport_tall backdrop />
+  <PolarisIcons.viewport_tall />
+  <PolarisIcons.viewport_tall major />
+  <PolarisIcons.viewport_tall class="w-4 h-4" color="highlight" />
+  <PolarisIcons.viewport_tall backdrop />
   ```
   """
   attr :rest, :global,
@@ -13280,10 +13294,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.viewport_wide />
-  <Polaris.viewport_wide major />
-  <Polaris.viewport_wide class="w-4 h-4" color="highlight" />
-  <Polaris.viewport_wide backdrop />
+  <PolarisIcons.viewport_wide />
+  <PolarisIcons.viewport_wide major />
+  <PolarisIcons.viewport_wide class="w-4 h-4" color="highlight" />
+  <PolarisIcons.viewport_wide backdrop />
   ```
   """
   attr :rest, :global,
@@ -13315,10 +13329,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.vocabulary />
-  <Polaris.vocabulary major />
-  <Polaris.vocabulary class="w-4 h-4" color="highlight" />
-  <Polaris.vocabulary backdrop />
+  <PolarisIcons.vocabulary />
+  <PolarisIcons.vocabulary major />
+  <PolarisIcons.vocabulary class="w-4 h-4" color="highlight" />
+  <PolarisIcons.vocabulary backdrop />
   ```
   """
   attr :rest, :global,
@@ -13350,10 +13364,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.wand />
-  <Polaris.wand minor />
-  <Polaris.wand class="w-4 h-4" color="highlight" />
-  <Polaris.wand minor backdrop />
+  <PolarisIcons.wand />
+  <PolarisIcons.wand minor />
+  <PolarisIcons.wand class="w-4 h-4" color="highlight" />
+  <PolarisIcons.wand minor backdrop />
   ```
   """
   attr :rest, :global,
@@ -13391,10 +13405,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.wearable />
-  <Polaris.wearable major />
-  <Polaris.wearable class="w-4 h-4" color="highlight" />
-  <Polaris.wearable backdrop />
+  <PolarisIcons.wearable />
+  <PolarisIcons.wearable major />
+  <PolarisIcons.wearable class="w-4 h-4" color="highlight" />
+  <PolarisIcons.wearable backdrop />
   ```
   """
   attr :rest, :global,
@@ -13426,10 +13440,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.wholesale />
-  <Polaris.wholesale major />
-  <Polaris.wholesale class="w-4 h-4" color="highlight" />
-  <Polaris.wholesale backdrop />
+  <PolarisIcons.wholesale />
+  <PolarisIcons.wholesale major />
+  <PolarisIcons.wholesale class="w-4 h-4" color="highlight" />
+  <PolarisIcons.wholesale backdrop />
   ```
   """
   attr :rest, :global,
@@ -13461,10 +13475,10 @@ defmodule PolarisIcons do
   ## Examples
 
   ```heex
-  <Polaris.wifi />
-  <Polaris.wifi major />
-  <Polaris.wifi class="w-4 h-4" color="highlight" />
-  <Polaris.wifi backdrop />
+  <PolarisIcons.wifi />
+  <PolarisIcons.wifi major />
+  <PolarisIcons.wifi class="w-4 h-4" color="highlight" />
+  <PolarisIcons.wifi backdrop />
   ```
   """
   attr :rest, :global,

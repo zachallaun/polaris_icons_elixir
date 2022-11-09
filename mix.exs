@@ -30,7 +30,7 @@ defmodule PolarisIcons.MixProject do
       {:phoenix_live_view, "~> 0.18.2"},
       {:castore, ">= 0.0.0"},
       {:ex_doc, "~> 0.23", only: :dev, runtime: false},
-      {:recase, "~> 0.7.0", only: :dev}
+      {:recase, "~> 0.7.0", only: [:dev, :test]}
     ]
   end
 
