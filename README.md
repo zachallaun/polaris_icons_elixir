@@ -1,21 +1,19 @@
-# Heroicons
+# Polaris Icons
 
-[Heroicons](https://heroicons.com) are "a set of free MIT-licensed high-quality SVG icons for you to use in your web projects". This package gives you Elixir functions to drop Heroicons into your HTML, styled with arbitrary classes.
+[Polaris Icons](https://polaris.shopify.com/icons) are a set of svg icons for use by Shopify partners building applications on the Shopify platform.
 
-This library provides optimized svgs for each Heroicon packaged as a Phoenix Component.
+This library provides optimized svgs for each Polaris Icon packaged as a Phoenix Component.
 
-Heroicons are designed by [Steve Schoger](https://twitter.com/steveschoger)
-
-Current Heroicons Version: **2.0.12**.
+Current Polaris Icons Version: **6.5.0**.
 
 ## Installation
 
-Add Heroicons to your `mix.exs`:
+Add Polaris Icons to your `mix.exs`:
 
 ```elixir
 defp deps do
   [
-    {:heroicons, "~> 0.5.0"}
+    {:polaris_icons, "~> 0.0.1"}
   ]
 end
 ```
@@ -24,22 +22,38 @@ After that, run `mix deps.get`.
 
 ## Usage
 
-The components are provided by the `Heroicons` module. Each icon is a Phoenix Component you can use in your HEEx templates.
-
-By default, the icon components will use the outline style, but the `solid` or
-`mini` attributes may be passed to select styling, for example:
+The components are provided by the `PolarisIcons` module.
+Each icon is a Phoenix Component you can use in your HEEx templates.
 
 ```eex
-<Heroicons.cake />
-<Heroicons.cake solid />
-<Heroicons.cake mini />
+<PolarisIcons.abandoned_cart />
+<PolarisIcons.clock />
+<PolarisIcons.clock minor />
+<PolarisIcons.clock minor backdrop color="warning" />
+```
+
+Some icons have both a major (default) and minor variant, or only one or the other.
+As seen above, for icons that support both, the minor variant can be selected using the `minor` attribute.
+Using an icon that only supports a minor variant without specifying the `minor` attribute will issue a compile-time attribute error.
+
+```eex
+Correct:
+<PolarisIcons.adjust minor />
+
+Will result in a compile-time error:
+<PolarisIcons.adjust />
 ```
 
 You can also pass arbitrary HTML attributes to the components, such as classes:
 
- ```eex
-<Heroicons.cake class="w-2 h-2" />
-<Heroicons.cake solid class="w-2 h-2 text-gray-500" />
+```eex
+<PolarisIcons.clock class="w-2 h-2" />
+<PolarisIcons.clock minor class="w-2 h-2 text-gray-500" />
 ```
 
-For a full list of icons see [the docs](https://hexdocs.pm/heroicons/api-reference.html) or [heroicons.com](https://heroicons.com/).
+For a full list of icons see [the docs](https://hexdocs.pm/polaris_icons) or [Polaris Icons](https://polaris.shopify.com/icons).
+
+## Attribution
+
+This project was initially forked from [mveytsman/heroicons_elixir](https://github.com/mveytsman/heroicons_elixir).
+All credit for this project's inspiration and structure goes to Max and other contributors of `heroicons_elixir`!

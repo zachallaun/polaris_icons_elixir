@@ -1,16 +1,16 @@
-defmodule HeroiconsElixir.MixProject do
+defmodule PolarisIconsElixir.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :heroicons,
-      version: "0.5.1",
+      app: :polaris_icons,
+      version: "0.0.1",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      name: "Heroicons",
-      source_url: "https://github.com/mveytsman/heroicons_elixir",
-      description: "Phoenix components for Heroicons!",
+      name: "Polaris Icons",
+      source_url: "https://github.com/zachallaun/polaris_icons_elixir",
+      description: "Phoenix components for Polaris Icons",
       docs: docs(),
       package: package(),
       xref: [exclude: [:httpc, :public_key]]
@@ -36,7 +36,7 @@ defmodule HeroiconsElixir.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/mveytsman/heroicons_elixir"}
+      links: %{"GitHub" => "https://github.com/zachallaun/polaris_icons_elixir"}
     ]
   end
 
