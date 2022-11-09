@@ -1,4 +1,4 @@
-defmodule PolarisIconsElixir.MixProject do
+defmodule PolarisIcons.MixProject do
   use Mix.Project
 
   def project do
@@ -28,8 +28,9 @@ defmodule PolarisIconsElixir.MixProject do
   defp deps do
     [
       {:phoenix_live_view, "~> 0.18.2"},
+      {:castore, ">= 0.0.0"},
       {:ex_doc, "~> 0.23", only: :dev, runtime: false},
-      {:castore, ">= 0.0.0"}
+      {:recase, "~> 0.7.0", only: :dev}
     ]
   end
 
